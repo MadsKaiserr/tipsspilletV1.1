@@ -1223,8 +1223,8 @@ function StageMatcharticle () {
                         var randomNumber = Math.floor(Math.random() * 512);
                         var randomId = mstime+"-"+randomNumber;
                         return (
-                            <ul>
-                                <p className="tabel-item">{item.name}</p>
+                            <li key={item.name + "first"}>
+                                <li key={item.name} className="tabel-item">{item.name}</li>
                                 {item.standings.data.map((res) => {
                                     return (
                                         <li key={item.season_id + "-" + randomId + item.name + res.name}>
@@ -1305,7 +1305,7 @@ function StageMatcharticle () {
                                         );
                                     }
                                 )}
-                            </ul>
+                            </li>
                             );
                     } else {
                         var liga = "";
@@ -1315,7 +1315,7 @@ function StageMatcharticle () {
                             liga = item.standings.data[0].league.data.name + " - " + item.name;
                         }
                         return (
-                            <div>
+                            <li key={item.season_id}>
                                 <Link href={"/stage/league?id=" + item.season_id}>
                                     <div className="tabel-top">
                                         <p className="tabel-top-h1">{liga}</p>
@@ -1390,7 +1390,7 @@ function StageMatcharticle () {
                                         )}
                                     </ul>
                                 </div>
-                            </div>
+                            </li>
                             );
                     }
                 } else {
@@ -1436,7 +1436,7 @@ function StageMatcharticle () {
                     if (item.slice(0,5) === "shots") {
                         if (localStatArray["shots"] && visitorStatArray["shots"]) {
                             return (
-                                <div className="stats-element">
+                                <li key={item} className="stats-element">
                                     <div className="stats-top">
                                         <p className="stats-p">{localStatArray["shots"][item.substring(5)]}</p>
                                         <p className="stats-h1">{itemName}</p>
@@ -1448,13 +1448,13 @@ function StageMatcharticle () {
                                         <div className="stats-right" style={{width: ((visitorStatArray["shots"][item.substring(5)] / (localStatArray["shots"][item.substring(5)] + visitorStatArray["shots"][item.substring(5)])) * 100) + "%"}}>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
                             );
                         } else return;
                     } else if (item.slice(0,7) === "attacks") {
                         if (localStatArray["attacks"] && visitorStatArray["attacks"]) {
                             return (
-                                <div className="stats-element">
+                                <li key={item} className="stats-element">
                                     <div className="stats-top">
                                         <p className="stats-p">{localStatArray["attacks"][item.substring(7)]}</p>
                                         <p className="stats-h1">{itemName}</p>
@@ -1466,13 +1466,13 @@ function StageMatcharticle () {
                                         <div className="stats-right" style={{width: ((visitorStatArray["attacks"][item.substring(7)] / (localStatArray["attacks"][item.substring(7)] + visitorStatArray["attacks"][item.substring(7)])) * 100) + "%"}}>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
                             );
                         } else return;
                     } else {
                         if (localStatArray[item]) {
                             return (
-                                <div className="stats-element">
+                                <li key={item} className="stats-element">
                                     <div className="stats-top">
                                         <p className="stats-p">{localStatArray[item]}</p>
                                         <p className="stats-h1">{itemName}</p>
@@ -1484,7 +1484,7 @@ function StageMatcharticle () {
                                         <div className="stats-right" style={{width: ((visitorStatArray[item] / (localStatArray[item] + visitorStatArray[item])) * 100) + "%"}}>
                                         </div>
                                     </div>
-                                </div>
+                                </li>
                             );
                         }
                     }
@@ -1836,45 +1836,45 @@ function StageMatcharticle () {
                 var positions = ["G","D","M","A"];
                 return (
                     <>
-                        <div className="sq-wrapper">
+                        <ul className="sq-wrapper">
                             {positions.map(res => {
                                 return (
-                                    <div className="sq-section">
+                                    <li key={res + homeTeamId} className="sq-section">
                                         {indexes.map(res2 => {
                                             if (item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === homeTeamId}))].position === res) {
                                                 return (
-                                                    <div className="sq-player">
+                                                    <li key={res2 + homeTeamId} className="sq-player">
                                                         <Image height="18px" width="18px" src={item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === homeTeamId}))].player.data.image_path} alt="" className="sq-img" />
                                                         <p className="sq-p"><span className="st-p-fat">{item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === homeTeamId}))].number}. </span>{item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === homeTeamId}))].player.data.common_name}</p>
-                                                    </div>
+                                                    </li>
                                                 );
                                             }
                                         })}
-                                    </div>
+                                    </li>
                                 );
                             })}
-                        </div>
-                        <div className="sq-wrapper" style={{top: "inherit", bottom: "0px"}}>
+                        </ul>
+                        <ul className="sq-wrapper" style={{top: "inherit", bottom: "0px"}}>
                             {positions.reverse().map(res => {
                                 return (
-                                    <div className="sq-section">
+                                    <li key={res + homeTeamId} className="sq-section">
                                         {indexes.map(res2 => {
                                             var test2 = item.findIndex(object => {return object.formation_position === res2 && object.team_id === visitorTeamId});
                                             if (test2 >= 0) {
                                                 if (item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === visitorTeamId}))].position === res) {
                                                     return (
-                                                        <div className="sq-player">
+                                                        <li key={res2 + homeTeamId} className="sq-player">
                                                             <Image height="18px" width="18px" src={item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === visitorTeamId}))].player.data.image_path} alt="" className="sq-img" />
                                                             <p className="sq-p"><span className="st-p-fat">{item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === visitorTeamId}))].number}. </span>{item[(item.findIndex(object => {return object.formation_position === res2 && object.team_id === visitorTeamId}))].player.data.common_name}</p>
-                                                        </div>
+                                                        </li>
                                                     );
                                                 }
                                             }
                                         })}
-                                    </div>
+                                    </li>
                                 );
                             })}
-                        </div>
+                        </ul>
                     </>
                 );
             });
@@ -2169,7 +2169,7 @@ function StageMatcharticle () {
                                     {result["time"].status === "FT_PEN" && <p className={live}>FT Str.</p>}
                                     {result["time"].status === "NS" && <p className="match-stilling-p1">{restTime}</p>}
                                     {result["time"].status === "LIVE" && <p className={live}>{time}</p>}
-                                    {result["time"].status === "LIVE" && <p className="stage-blink">'</p>}
+                                    {result["time"].status === "LIVE" && <p className="stage-blink">&apos;</p>}
                                 </div>
                                 {result["time"].status === "AET" && <p className="match-stilling-p" style={{letterSpacing: "30px", marginRight: "-30px"}}>{result["scores"].ft_score && <>{result["scores"].ft_score}</>}</p>}
                                 {result["time"].status === "FT" && <p className="match-stilling-p" style={{letterSpacing: "30px", marginRight: "-30px"}}>{result["scores"].ft_score && <>{result["scores"].ft_score}</>}</p>}
@@ -2203,7 +2203,7 @@ function StageMatcharticle () {
                                                                         <Image height="18px" width="18px" src={goal} alt="" className="oversigt-img" />
                                                                     </div>
                                                                     <div className="oversigt-el-box-r">
-                                                                        <p className="oversigt-h4">{item.minute}'</p>
+                                                                        <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -2215,7 +2215,7 @@ function StageMatcharticle () {
                                                             <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                                 <div className="oversigt-element">
                                                                     <div className="oversigt-el-box-l">
-                                                                        <p className="oversigt-h4">{item.minute}'</p>
+                                                                        <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                     </div>
                                                                     <div className="oversigt-el-icon">
                                                                         <Image height="18px" width="18px" src={goal} alt="" className="oversigt-img" />
@@ -3578,7 +3578,7 @@ function StageMatcharticle () {
                                                                     <Image height="18px" width="18px" src={goal} alt="" className="oversigt-img" />
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3598,7 +3598,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3618,7 +3618,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3638,7 +3638,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3662,7 +3662,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3676,7 +3676,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <Image height="18px" width="18px" src={goal} alt="" className="oversigt-img" />
@@ -3693,7 +3693,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <div className="oversigt-card">
@@ -3713,7 +3713,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <div className="oversigt-card">
@@ -3743,7 +3743,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3753,7 +3753,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                <p className="oversigt-h4">{item.minute}'</p>
+                                                                <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <div className="sub">
@@ -3804,7 +3804,7 @@ function StageMatcharticle () {
                                                                     <Image height="18px" width="18px" src={goal} alt="" className="oversigt-img" />
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3824,7 +3824,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3844,7 +3844,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3864,7 +3864,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3888,7 +3888,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3902,7 +3902,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <Image height="18px" width="18px" src={goal} alt="" className="oversigt-img" />
@@ -3919,7 +3919,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <div className="oversigt-card">
@@ -3939,7 +3939,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <div className="oversigt-card">
@@ -3969,7 +3969,7 @@ function StageMatcharticle () {
                                                                     </div>
                                                                 </div>
                                                                 <div className="oversigt-el-box-r">
-                                                                    <p className="oversigt-h4">{item.minute}'</p>
+                                                                    <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                             </div>
                                                         </li>
@@ -3979,7 +3979,7 @@ function StageMatcharticle () {
                                                         <li key={randomId + item.team_id + item.player_name + item.minute}>
                                                             <div className="oversigt-element">
                                                                 <div className="oversigt-el-box-l">
-                                                                <p className="oversigt-h4">{item.minute}'</p>
+                                                                <p className="oversigt-h4">{item.minute}&apos;</p>
                                                                 </div>
                                                                 <div className="oversigt-el-icon">
                                                                     <div className="sub">

@@ -6,6 +6,7 @@ const nextConfig = {
     domains: ['cdn.sportmonks.com'],
   },
   reactStrictMode: false,
+  pageExtensions: ['page.tsx', 'page.ts', 'page.jsx', 'page.js'],
 }
 
 module.exports = nextConfig

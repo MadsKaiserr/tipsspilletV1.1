@@ -364,7 +364,7 @@ function Signup () {
                             </div>
                             <div className="signup-check">
                                 <div className="signup-checkbox" id="box1" onClick={() => {if (box1) {setBox1(false)}else{setBox1(true)}}}></div>
-                                <p className="login-check-p">Jeg accepterer Tipsspillet's <Link href="/betingelser" className="login-form-dotted"><span className="login-form-dotted">brugsbetingelser</span></Link> og <Link href="/privatliv" className="login-form-dotted"><span className="login-form-dotted">privatlivspolitik</span></Link></p>
+                                <p className="login-check-p">Jeg accepterer Tipsspillet&apos;s <Link href="/betingelser" className="login-form-dotted"><span className="login-form-dotted">brugsbetingelser</span></Link> og <Link href="/privatliv" className="login-form-dotted"><span className="login-form-dotted">privatlivspolitik</span></Link></p>
                             </div>
                             <div className="signup-check">
                                 <div className="signup-checkbox" id="box2" onClick={() => {if (box2) {setBox2(false)}else{setBox2(true)}}}></div>
@@ -383,7 +383,7 @@ function Signup () {
                             <input value={username} onChange={event => setUsername(event.target.value)} type="text" className="login-form-input" required/>
                             <div className="signup-check">
                                 <div className="signup-checkbox" id="box3" onClick={() => {if (box3) {setBox3(false)}else{setBox3(true)}}}></div>
-                                <p className="login-check-p">Jeg accepterer Tipsspillet's <Link href="/betingelser" className="login-form-dotted"><span className="login-form-dotted">brugsbetingelser</span></Link> og <Link href="/privatliv" className="login-form-dotted"><span className="login-form-dotted">privatlivspolitik</span></Link></p>
+                                <p className="login-check-p">Jeg accepterer Tipsspillet&apos;s <Link href="/betingelser" className="login-form-dotted"><span className="login-form-dotted">brugsbetingelser</span></Link> og <Link href="/privatliv" className="login-form-dotted"><span className="login-form-dotted">privatlivspolitik</span></Link></p>
                             </div>
                             <div className="signup-check">
                                 <div className="signup-checkbox" id="box4" onClick={() => {if (box4) {setBox4(false)}else{setBox4(true)}}}></div>

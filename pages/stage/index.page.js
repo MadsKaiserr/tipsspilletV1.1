@@ -1458,7 +1458,7 @@ function StageForside () {
                                     liveView = item.time.minute;
                                     getTime = <div className="live-con">
                                         <p className="stage-kampe-minut stage-kampe-minut-active">{liveView}</p>
-                                        <p className="stage-blink">'</p>
+                                        <p className="stage-blink">&apos;</p>
                                     </div>;
                                 } else if (item.time.status === "NS") {
                                     scoreLocal = "stage-stilling-p-none";
@@ -1622,7 +1622,7 @@ function StageForside () {
                                                                 <div className="stage-live">
                                                                     <div className="stage-live-con">
                                                                         <p className="stage-kampe-minut stage-kampe-minut-active">{liveView}</p>
-                                                                        <p className="stage-blink">'</p>
+                                                                        <p className="stage-blink">&apos;</p>
                                                                     </div>
                                                                     <div className="stage-live-scores">
                                                                         <p className="stage-stilling-p">{item.scores.localteam_score}</p>
@@ -1792,7 +1792,7 @@ function StageForside () {
                                                                 <div className="stage-live">
                                                                     <div className="stage-live-con">
                                                                         <p className="stage-kampe-minut stage-kampe-minut-active">{liveView}</p>
-                                                                        <p className="stage-blink">'</p>
+                                                                        <p className="stage-blink">&apos;</p>
                                                                     </div>
                                                                     <div className="stage-live-scores">
                                                                         <p className="stage-stilling-p">{item.scores.localteam_score}</p>
@@ -1981,25 +1981,25 @@ function StageForside () {
             }
         }
         return (
-            <div className="md-wrapper" id="md-wrapper">
-                {earlyDates.reverse().map((item) => {
+            <ul className="md-wrapper" id="md-wrapper">
+                {earlyDates.reverse().map((date) => {
                     return (
-                        <div className="md-element" id={"date-bw-" + item.days} onClick={() => {setSelected(new Date(new Date(today).getTime() - (3600 * 1000 * 24 * item.days)));setDateActive("date-bw-" + item.days)}}>
-                            <p className="md-p">{item.date}</p>
-                        </div>
+                        <li key={"date-bw-" + date.days} className="md-element" id={"date-bw-" + date.days} onClick={() => {setSelected(new Date(new Date(today).getTime() - (3600 * 1000 * 24 * date.days)));setDateActive("date-bw-" + date.days)}}>
+                            <p className="md-p">{date.date}</p>
+                        </li>
                     )
                 })}
-                <div className="md-element md-active" id="date-0" onClick={() => {setSelected(new Date(new Date(today).getTime()));setDateActive("date-0")}}>
+                <li key={"date-0"} className="md-element md-active" id="date-0" onClick={() => {setSelected(new Date(new Date(today).getTime()));setDateActive("date-0")}}>
                     <p className="md-p">I dag</p>
-                </div>
-                {kommendeDates.map((item) => {
+                </li>
+                {kommendeDates.map((date) => {
                     return (
-                        <div className="md-element" id={"date-fw-" + item.days} onClick={() => {setSelected(new Date(new Date(today).getTime() + (3600 * 1000 * 24 * item.days)));setDateActive("date-fw-" + item.days)}}>
-                            <p className="md-p">{item.date}</p>
-                        </div>
+                        <li key={"date-fw-" + date.days} className="md-element" id={"date-fw-" + date.days} onClick={() => {setSelected(new Date(new Date(today).getTime() + (3600 * 1000 * 24 * date.days)));setDateActive("date-fw-" + date.days)}}>
+                            <p className="md-p">{date.date}</p>
+                        </li>
                     )
                 })}
-            </div>
+            </ul>
         );
     }
 

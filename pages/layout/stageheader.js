@@ -1597,7 +1597,7 @@ function StageHeader () {
                                 return (
                                     <li key={item.klub + item.url} className="display" style={{width: "100%"}}>
                                         <div className="hit-elem" style={{width: "100%"}} onClick={() => {closeSearch(); window.open(item.url, "_SELF")}}>
-                                            <img src={item.img} alt="Fodboldklub" className="hit-img" />
+                                            <Image height="18px" width="18px" src={item.img} alt="Fodboldklub" className="hit-img" />
                                             <div className="hit-info">
                                                 <p className="hit-h1">{item.klub}</p>
                                                 <p className="hit-h2">{item.land}</p>

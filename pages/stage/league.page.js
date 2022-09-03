@@ -265,8 +265,8 @@ function StageLeague () {
                     var randomNumber = Math.floor(Math.random() * 512);
                     var randomId = mstime+"-"+randomNumber;
                     return (
-                        <ul>
-                            <p className="tabel-item">{item.name}</p>
+                        <li key={item.name + "first"}>
+                            <li key={item.name} className="tabel-item">{item.name}</li>
                             {item.standings.data.map((res) => {
                                 return (
                                     <li key={item.season_id + "-" + randomId + item.name + res.name}>
@@ -344,7 +344,7 @@ function StageLeague () {
                                     );
                                 }
                             )}
-                        </ul>
+                        </li>
                         );
                 } else {
                     var liga = "";
@@ -354,7 +354,7 @@ function StageLeague () {
                         liga = item.standings.data[0].league.data.name + " - " + item.name;
                     }
                     return (
-                        <div>
+                        <li key={item.season_id}>
                             <Link href={"/stage/league?id=" + item.season_id}>
                                 <div className="tabel-top">
                                     <p className="tabel-top-h1">{liga}</p>
@@ -426,7 +426,7 @@ function StageLeague () {
                                     )}
                                 </ul>
                             </div>
-                        </div>
+                        </li>
                         );
                 }
             })

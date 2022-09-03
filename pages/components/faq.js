@@ -88,27 +88,27 @@ function Faq () {
 </svg>
                     </button>
                 </div>
-                <div className="faq-container">
+                <ul className="faq-container">
                     {questions.map(question => {
                         return (
-                            <div className="faq-element" onClick={() => {showQuestion(question.id)}}>
+                            <li key={question.id} className="faq-element" onClick={() => {showQuestion(question.id)}}>
                                 <div className="faq-question">
                                     <p className="faq-q" id={question.id + "-p"}>{question.name}</p>
                                     <svg xmlns="http://www.w3.org/2000/svg" id={question.id + "-i"} className="faq-chevron" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </div>
-                                <div className="faq-answer" id={question.id + "-a"}>
+                                <ul className="faq-answer" id={question.id + "-a"}>
                                     {question.paragraphs.map(para => {
                                         return (
-                                            <p className="faq-a-p">{para.text}</p>
+                                            <li key={para.text} className="faq-a-p">{para.text}</li>
                                         );
                                     })}
-                                </div>
-                            </div>
+                                </ul>
+                            </li>
                         );
                     })}
-                </div>
+                </ul>
             </div>
         </>
     )

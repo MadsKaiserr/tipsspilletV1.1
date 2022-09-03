@@ -19,8 +19,8 @@ function MyApp({ Component, pageProps }) {
       <Head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta http-equiv="content-language" content="da" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="content-language" content="da" />
 
         <meta name="trustpilot-one-time-domain-verification-id" content="ff4f2ee6-6577-4745-905d-b14b269c3fb3"/>
 
