@@ -1,0 +1,71 @@
+Date : 2022-09-03 11:39:36
+Directory : c:\Users\Mads Kaiser\Desktop\tipsspillet\pages
+Total : 39 files,  25734 codes, 97 comments, 1984 blanks, all 27815 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |         29 |     16,342 |         93 |        683 |     17,118 |
+| CSS        |          9 |      9,391 |          4 |      1,301 |     10,696 |
+| XML        |          1 |          1 |          0 |          0 |          1 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                      |         39 |     25,734 |         97 |      1,984 |     27,815 |
+| components                                                             |          4 |        657 |          0 |         45 |        702 |
+| css                                                                    |          9 |      9,391 |          4 |      1,301 |     10,696 |
+| img                                                                    |          1 |          1 |          0 |          0 |          1 |
+| layout                                                                 |          3 |      2,100 |          1 |         29 |      2,130 |
+| services                                                               |          4 |        313 |          5 |          8 |        326 |
+| stage                                                                  |          9 |     11,986 |         87 |        521 |     12,594 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                               | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\_app.js                 | JavaScript |         55 |          0 |         11 |         66 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\betingelser.js          | JavaScript |         95 |          0 |          3 |         98 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\components\faq.js       | JavaScript |        112 |          0 |          5 |        117 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\components\find.js      | JavaScript |        420 |          0 |         22 |        442 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\components\height.js    | JavaScript |         10 |          0 |          3 |         13 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\components\login.js     | JavaScript |        115 |          0 |         15 |        130 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\components.css      | CSS        |      1,497 |          0 |        209 |      1,706 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\forside.css         | CSS        |      1,024 |          0 |        154 |      1,178 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\gruppespil.css      | CSS        |      1,106 |          0 |        162 |      1,268 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\match.css           | CSS        |      1,338 |          0 |        194 |      1,532 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\priser.css          | CSS        |         36 |          0 |          5 |         41 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\responsive.css      | CSS        |        925 |          0 |         50 |        975 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\signup.css          | CSS        |        354 |          0 |         48 |        402 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\stage.css           | CSS        |      2,500 |          0 |        368 |      2,868 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\css\variables.css       | CSS        |        611 |          4 |        111 |        726 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\faq.js                  | JavaScript |         36 |          0 |          4 |         40 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\gruppespil.js           | JavaScript |         74 |          0 |          3 |         77 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\img\congrats.svg        | XML        |          1 |          0 |          0 |          1 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\index.js                | JavaScript |        323 |          0 |         13 |        336 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\kontakt.js              | JavaScript |         56 |          0 |          3 |         59 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\layout\footer.js        | JavaScript |         69 |          0 |          2 |         71 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\layout\header.js        | JavaScript |        219 |          0 |          8 |        227 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\layout\stageheader.js   | JavaScript |      1,812 |          1 |         19 |      1,832 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\priser.js               | JavaScript |        189 |          0 |          4 |        193 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\privatliv.js            | JavaScript |         76 |          0 |          3 |         79 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\services\algo.js        | JavaScript |        246 |          0 |          0 |        246 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\services\authService.js | JavaScript |         26 |          0 |          2 |         28 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\services\login.js       | JavaScript |         12 |          0 |          2 |         14 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\services\requireAuth.js | JavaScript |         29 |          5 |          4 |         38 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\signup.js               | JavaScript |        382 |          0 |         36 |        418 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\faq.js            | JavaScript |         26 |          0 |          4 |         30 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\gruppespil.js     | JavaScript |        694 |          0 |         58 |        752 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\gruppession.js    | JavaScript |         21 |          0 |          4 |         25 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\index.js          | JavaScript |      2,179 |         54 |        100 |      2,333 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\league.js         | JavaScript |        851 |         15 |         28 |        894 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\match.js          | JavaScript |      4,065 |         17 |        180 |      4,262 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\notifikationer.js | JavaScript |        815 |          0 |         55 |        870 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\setup.js          | JavaScript |      1,846 |          0 |         36 |      1,882 |
+| c:\Users\Mads Kaiser\Desktop\tipsspillet\pages\stage\team.js           | JavaScript |      1,489 |          1 |         56 |      1,546 |
+| Total                                                                  |            |     25,734 |         97 |      1,984 |     27,815 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
