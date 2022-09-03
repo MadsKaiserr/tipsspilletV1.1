@@ -6,35 +6,35 @@
 @font-face {
   font-family: 'CircularBlack';
   src: local('CircularBlack'),
-    url(./assets/fonts/CircularStd-Black.otf) format('opentype');
+    url(./fonts/CircularStd-Black.otf) format('opentype');
   font-display: swap
 }
 
 @font-face {
   font-family: 'CircularBold';
   src: local('CircularBold'),
-    url(./assets/fonts/CircularStd-Bold.otf) format('opentype');
+    url(./fonts/CircularStd-Bold.otf) format('opentype');
   font-display: swap
 }
 
 @font-face {
   font-family: 'CircularLight';
   src: local('CircularLight'),
-    url(./assets/fonts/CircularStd-Light.otf) format('opentype');
+    url(./fonts/CircularStd-Light.otf) format('opentype');
   font-display: swap
 }
 
 @font-face {
   font-family: 'CircularMedium';
   src: local('CircularMedium'),
-    url(./assets/fonts/CircularStd-Medium.otf) format('opentype');
+    url(./fonts/CircularStd-Medium.otf) format('opentype');
   font-display: swap
 }
 
 @font-face {
   font-family: 'CircularBook';
   src: local('CircularBook'),
-    url(./assets/fonts/CircularStd-Book.otf) format('opentype');
+    url(./fonts/CircularStd-Book.otf) format('opentype');
   font-display: swap
 }
 
