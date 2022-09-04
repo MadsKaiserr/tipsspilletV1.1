@@ -2241,7 +2241,7 @@ function StageForside () {
                                     </div>
                                     {popular.map((team) => {
                                         return (
-                                            <div className="stage-team">
+                                            <li key={popular.team} className="stage-team">
                                                 <Link href={"/stage/team?team=" + team.id}>
                                                     <div className="stage-kampe-team2">
                                                         <div className="stage-kampe-teams-div">
@@ -2258,7 +2258,7 @@ function StageForside () {
                                                         </svg>
                                                     </div>
                                                 </Link>
-                                            </div>
+                                            </li>
                                         );
                                     })}
                                 </div>
