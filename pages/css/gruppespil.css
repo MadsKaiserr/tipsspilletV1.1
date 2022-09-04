@@ -59,15 +59,15 @@
 }
 
 .dyst-info-h1 {
-    font-family: CircularMedium;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     color: var(--softBlack);
     font-size: 20px;
 }
 
 .dyst-info-h2 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     opacity: 0.7;
     color: var(--softBlack);
     font-size: 11px;
@@ -107,7 +107,8 @@
     color: #fff;
     margin-left: 15px;
     font-size: 13px;
-    font-family: CircularLight;;
+    font-family: Inter;
+    font-weight: 500;
 }
 
 .gruppespil-table-row {
@@ -208,10 +209,10 @@
 }
 
 .dyst-p {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     opacity: 0.9;
-    color: var(--softBlack);
+    color: var(--black);
     font-size: 20px;
     padding-top: 15px;
 }
@@ -240,16 +241,16 @@
 }
 
 .dyst-win-h1 {
-    font-family: CircularMedium;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     color: var(--primary);
     opacity: 0.8;
     font-size: 22px;
 }
 
 .dyst-win-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     opacity: 0.8;
     padding-top: 2px;
     color: var(--softBlack);
@@ -274,8 +275,8 @@
     background-color: var(--primary);
     color: #fff;
     font-size: 12px;
-    font-weight: 100;
-    font-family: CircularLight;
+    font-weight: 400;
+    font-family: Inter;
     text-align: center;
     width: 100%;
     padding: 3px 0px;
@@ -316,8 +317,8 @@
   }
   
   .as-title {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 15px;
     padding-left: 15px;
     width: 17vw;
@@ -325,8 +326,8 @@
   }
   
   .as-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 15px;
     color: var(--softBlack);
   }
@@ -676,8 +677,8 @@
     font-size: 13px;
     cursor: pointer;
     color: var(--primary);
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     position: absolute;
     right: 15px;
     top: 20px;
@@ -788,23 +789,23 @@
 }
 
 .chat-dato {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 300;
     opacity: 0.7;
     font-size: 12px;
     color: var(--softBlack);
 }
 
 .chat-name {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 15px;
     color: var(--softBlack);
 }
 
 .chat-name-active {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 15px;
     color: var(--primary);
 }
@@ -824,8 +825,8 @@
 }
 
 .chat-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 13px;
     opacity: 0.7;
     color: var(--softBlack);
@@ -934,14 +935,16 @@
 }
 
   .gruppespil-info-element-p {
-      font-family: CircularBook;
+      font-family: Inter;
+      font-weight: 400;
       font-size: 13px;
       color: var(--black);
       opacity: 0.7;
   }
 
   .gruppespil-info-element-h1 {
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 22px;
     max-width: 200px;
     overflow: hidden;
@@ -1069,8 +1072,8 @@
     color: var(--softBlack);
     opacity: 0.7;
     padding-bottom: 5px;
-    font-weight: 100;
-    font-family: CircularLight;
+    font-weight: 400;
+    font-family: Inter;
 }
 
 .gruppespil-li {
@@ -1116,11 +1119,11 @@
 }
 
 .gruppespil-table-title {
-    font-family: Open Sans;
-    font-weight: 400;
+    font-family: Inter;
+    font-weight: 600;
     font-size: 13px;
     color: var(--black);
-    opacity: 0.5;
+    opacity: 0.6;
     vertical-align: top;
     display: inline-block;
 }

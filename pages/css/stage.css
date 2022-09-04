@@ -171,8 +171,8 @@
 }
 
 .team-kampe-h1 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 16px;
     padding: 10px;
     display: inline-block;
@@ -182,8 +182,8 @@
 }
 
 .trup-h1 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 14px;
     padding: 5px;
     margin-left: 5px;
@@ -201,8 +201,8 @@
 }
 
 .team-kampe-p {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     padding-left: 15px;
     opacity: 0.8;
     font-size: 13px;
@@ -329,30 +329,30 @@
   }
   
   .kupon-left-p {
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--softBlack);
     font-size: 13px;
-    font-weight: 100;
+    font-weight: 400;
     position: absolute;
     top: 11.5px;
     left: 15px;
   }
   
   .kupon-right-p {
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--softBlack);
     font-size: 13px;
-    font-weight: 100;
+    font-weight: 300;
     position: absolute;
     top: 11.5px;
     right: 15px;
   }
   
   .kupon-blue-match-p {
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--primary);
     font-size: 13px;
-    font-weight: 100;
+    font-weight: 400;
     cursor: pointer;
     transition: 0.2s;
   }
@@ -427,20 +427,21 @@
     font-size: 13px;
     opacity: 0.8;
     text-align: center;
-    width: 20px;;
-    font-family: CircularBook;
+    width: 20px;
+    font-weight: 500;
+    font-family: Inter;
   }
   
   .stat-p-h1 {
-      font-family: CircularBook;
-      font-weight: 100;
+      font-family: Inter;
+      font-weight: 500;
       font-size: 16px;
       color: var(--softBlack);
   }
   
   .stat-p-p {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     text-align: center;
     font-size: 13px;
     width: 20px;
@@ -460,8 +461,9 @@
     color: var(--softBlack);
     font-size: 15px;
     text-align: center;
-    width: 20px;;
-    font-family: CircularBook;
+    width: 20px;
+    font-weight: 500;
+    font-family: Inter;
   }
   
   .stat-text {
@@ -547,7 +549,7 @@
   }
   
   .kupon-bottom-info-p {
-    font-family: Open Sans;
+    font-family: Inter;
     font-weight: 400;
     font-size: 13px;
     color: var(--black);
@@ -1344,18 +1346,20 @@
   
   .nogames {
     display: none;
-    font-weight: 100;
+    font-weight: 400;
     font-size: 15px;
     opacity: 0.9;
     padding: 0px 20px;
     color: var(--softBlack);
-    font-family: CircularLight;
+    font-family: Inter;
   }
   
   .stage-kampe-teams-div {
     display: flex;
     justify-content: left;
     align-items: center;
+    gap: 10px;
+    padding-left: 10px;
   }
   
   .stage-teams-img {
@@ -1367,16 +1371,16 @@
   
   .stage-teams-h1 {
     font-size: 14px;
-    font-family: CircularBook;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 500;
   }
   
   .stage-teams-h2 {
     font-size: 12px;
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 400;
     opacity: 0.6;
   }
   
@@ -1390,10 +1394,6 @@
   
   #stage-main1 {
     opacity: 0;
-  }
-  
-  #stage-main2 {
-    display: none;
   }
   
   .kamp-odds-p-main {
@@ -1705,7 +1705,7 @@
     font-weight: 600;
     font-size: 15px;
     display: inline-block;
-    color: var(--black);
+    color: var(--softBlack);
   }
   
   .stage-kampe-head {
@@ -2143,8 +2143,8 @@
   }
   
   .stage-stilling-p {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 16px;
     width: 10px;
     text-align: center;
@@ -2153,8 +2153,8 @@
   }
   
   .stage-stilling-p-fat {
-    font-family: CircularBold;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 700;
     font-size: 16px;
     width: 10px;
     text-align: center;

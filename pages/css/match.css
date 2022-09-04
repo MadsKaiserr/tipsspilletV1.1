@@ -167,8 +167,8 @@
 }
 
 .match-yder-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--softBlack);
     font-size: 13px;
 }
@@ -227,8 +227,8 @@
 }
 
 .match-info-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--black);
     opacity: 0.8;
     font-size: clamp(11px, 2vw, 14px);
@@ -236,15 +236,15 @@
 }
 
 .match-info-h1 {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--black);
     font-size: clamp(12px, 2vw, 15px);
 }
 
 .match-info-h2 {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--black);
     font-size: clamp(12px, 2vw, 15px);
     text-align: right;
@@ -252,8 +252,8 @@
 }
 
 .match-info-h3 {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--black);
     font-size: clamp(12px, 2vw, 15px);
     width: clamp(100px, 30vw, 250px);
@@ -710,15 +710,15 @@
 .oversigt-h2 {
     color: var(--softBlack);
     font-size: 13px;
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     display: block !important;
 }
 
 .oversigt-h2-ind {
     font-size: 13px;
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     color: var(--green);
     display: block !important;
 }
@@ -761,8 +761,8 @@
 
 .oversigt-h2-ud {
     font-size: 13px;
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     color: var(--red);
     display: block !important;
 }
@@ -795,9 +795,9 @@
 .oversigt-h3 {
     color: var(--softBlack);
     font-size: 11px;
-    font-family: CircularLight;
+    font-family: Inter;
     opacity: 0.7;
-    font-weight: 100;
+    font-weight: 400;
     display: block !important;
 }
 
@@ -878,23 +878,23 @@
 .oversigt-h4 {
     color: var(--softBlack);
     font-size: 13px;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
 }
 
 .oversigt-h1 {
     color: var(--softBlack);
     font-size: 13px;
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
 }
 
 .oversigt-p {
     color: var(--softBlack);
     font-size: 12px;
-    font-family: CircularLight;
+    font-family: Inter;
     opacity: 0.8;
-    font-weight: 100;
+    font-weight: 400;
 }
 
 #startopstilling2 {
@@ -979,15 +979,15 @@
 .tabel-p {
     font-size: 15px;
     color: var(--softBlack);
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
 }
 
 .tabel-h1 {
     font-size: 15px;
     color: var(--softBlack);
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
 }
 
 .tabel-element {
@@ -1025,8 +1025,8 @@
 }
 
 .tabel-top-h1 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 16px;
     color: var(--black);
 }
@@ -1122,27 +1122,28 @@
 .match-league-p {
     font-size: 13px;
     color: var(--softBlack);
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     opacity: 0.7;
     transition: 0.2s;
 }
 
 .match-league-light {
-    font-family: CircularLight !important;
+    font-family: Inter !important;
+    font-weight: 500 !important;
 }
 
 .bench-h1 {
     font-size: 15px;
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     color: var(--softBlack);
 }
 
 .bench-h2 {
     font-size: 13px;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     opacity: 0.8;
     color: var(--softBlack);
 }
@@ -1307,8 +1308,8 @@
 
 .match-odds-h1 {
     font-size: 17px;
-    font-weight: 100;
-    font-family: CircularBook;
+    font-weight: 500;
+    font-family: Inter;
     color: var(--softBlack);
 }
 
@@ -1353,8 +1354,8 @@
 
 .match-odds-offer-h1 {
     font-size: 13px;
-    font-weight: 100;
-    font-family: CircularLight;
+    font-weight: 400;
+    font-family: Inter;
     opacity: 0.9;
     color: #fff;
 }
@@ -1480,8 +1481,8 @@
 .stats-h1 {
     color: var(--softBlack);
     font-size: 15px;
-    font-weight: 100;
-    font-family: CircularBook;
+    font-weight: 500;
+    font-family: Inter;
 }
 
 .stats-top {
@@ -1494,8 +1495,8 @@
 .stats-p {
     color: var(--softBlack);
     font-size: 15px;
-    font-weight: 100;
-    font-family: CircularBook;
+    font-weight: 400;
+    font-family: Inter;
 }
 
 .stats-element {

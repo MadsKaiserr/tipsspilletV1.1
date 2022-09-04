@@ -112,7 +112,7 @@
     font-size: 13px;
     color: var(--softBlack);
     font-family: Inter;
-    font-weight: 300;
+    font-weight: 400;
   }
   
   .sidemenu {
@@ -220,8 +220,8 @@
   }
   
   .sidemenu-h2 {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     padding-left: 10px;
     color: var(--softBlack);
     opacity: 0.8;
@@ -362,8 +362,8 @@
   }
   
   .logo-h1 {
-    font-weight: 100;
-    font-family: CircularBold;
+    font-weight: 600;
+    font-family: Inter;
     color: var(--black);
     opacity: 0.95;
     font-size: 19px;
@@ -836,7 +836,8 @@
   }
   
   .user-email {
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 14px;
     vertical-align: top;
     color: var(--black);
@@ -844,7 +845,8 @@
   }
   
   .user-name {
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 500;
     font-size: 16px;
     vertical-align: top;
     color: var(--black);
@@ -873,9 +875,10 @@
   }
   
   .user-element-p {
-    font-family: CircularLight;
+    font-family: Inter;
     font-size: 15px;
     padding: 7px 0px;
+    font-weight: 400;
     display: inline-block;
     vertical-align: top;
     color: var(--black);
@@ -975,7 +978,8 @@
     text-align: center;
     color: var(--softBlack);
     font-size: 33px;
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 600;
 }
 
 .faq-input-con {
@@ -1078,8 +1082,8 @@
 
 .faq-q {
     color: var(--softBlack);
-    font-weight: 100;
-    font-family: CircularBook;
+    font-weight: 600;
+    font-family: Inter;
     font-size: clamp(12px, 2vw, 17px);
 }
 
@@ -1092,8 +1096,8 @@
 .kontakt-h3 {
   color: var(--softBlack);
   font-size: 14px;
-  font-family: CircularLight;
-  font-weight: 100;
+  font-family: Inter;
+  font-weight: 500;
   z-index: 10;
   opacity: 0.8;
   padding-top: 10px;
@@ -1130,8 +1134,8 @@
 }
 
 .kt-p {
-  font-family: CircularLight;
-  font-weight: 100;
+  font-family: Inter;
+  font-weight: 400;
   opacity: 0.8;
   color: var(--softBlack);
   font-size: 16px;
@@ -1147,8 +1151,8 @@
 }
 
 .kontakt-h1 {
-  font-family: CircularMedium;
-  font-weight: 100;
+  font-family: Inter;
+  font-weight: 600;
   color: var(--softBlack);
   font-size: 54px;
   z-index: 9;
@@ -1157,13 +1161,15 @@
 .betingelser-h1 {
   color: var(--black);
   font-size: 35px;
-  font-family: CircularBook;
+  font-family: Inter;
+  font-weight: 700;
 }
 
 .betingelser-h2 {
   color: var(--softBlack);
   font-size: 20px;
-  font-family: CircularLight;
+  font-family: Inter;
+  font-weight: 500;
   margin-top: 5px;
   margin-bottom: 15px;
 }
@@ -1171,7 +1177,8 @@
 .betingelser-h3 {
   color: var(--black);
   font-size: 22px;
-  font-family: CircularMedium;
+  font-family: Inter;
+  font-weight: 700;
   margin-top: 25px;
 }
 
@@ -1180,14 +1187,16 @@
   font-size: 18px;
   margin-top: 15px;
   margin-bottom: 5px;
-  font-family: CircularBook;
+  font-family: Inter;
+  font-weight: 600;
 }
 
 .betingelser-p {
   color: var(--softBlack);
   font-size: 17px;
   margin-bottom: 5px;
-  font-family: CircularLight;
+  font-family: Inter;
+  font-weight: 400;
   opacity: 0.9;
 }
 
@@ -1208,8 +1217,8 @@ gap: 8px;
 
 .faq-q-active {
     color: var(--primary);
-    font-weight: 100;
-    font-family: CircularBook;
+    font-weight: 600;
+    font-family: Inter;
     font-size: 17px;
 }
 
@@ -1221,7 +1230,8 @@ gap: 8px;
 .faq-a-p {
     color: var(--softBlack);
     opacity: 0.8;
-    font-family: CircularLight;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 16px;
     padding: 5px;
     transition: 0.2s;
@@ -1369,8 +1379,8 @@ gap: 8px;
   }
   
   .nav-info-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 300;
     font-size: 12px;
     color: var(--softBlack);
   }
@@ -1693,8 +1703,8 @@ gap: 8px;
     padding: 13px 20px;
     border: 0px;
     background-color: var(--stageSurface);
-    font-family: circularlight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--black);
     font-size: 14px;
     border-top-left-radius: 3px;

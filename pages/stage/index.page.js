@@ -71,6 +71,45 @@ function StageForside () {
         }
     }, [])
 
+    const [popular, setPopular] = useState([
+        {
+            "id": 14,
+            "name": "Manchester United",
+            "liga": "Premier League",
+            "img": "https://cdn.sportmonks.com/images/soccer/teams/14/14.png"
+        },
+        {
+            "id": 18583,
+            "name": "Danmark",
+            "liga": "Landshold",
+            "img": "https://cdn.sportmonks.com/images/soccer/teams/23/18583.png"
+        },
+        {
+            "id": 85,
+            "name": "FC København",
+            "liga": "Superliga",
+            "img": "https://cdn.sportmonks.com/images/soccer/teams/21/85.png"
+        },
+        {
+            "id": 8,
+            "name": "Liverpool",
+            "liga": "Premier League",
+            "img": "https://cdn.sportmonks.com/images/soccer/teams/8/8.png"
+        },
+        {
+            "id": 3468,
+            "name": "Real Madrid",
+            "liga": "La Liga",
+            "img": "https://cdn.sportmonks.com/images/soccer/teams/12/3468.png"
+        },
+        {
+            "id": 18647,
+            "name": "Frankrig",
+            "liga": "Landshold",
+            "img": "https://cdn.sportmonks.com/images/soccer/teams/23/18647.png"
+        }
+    ])
+
     const [currentLeagues, setCurrentLeagues] = useState([]);
     const [ligaLoad, setLigaLoad] = useState(false);
 
@@ -2154,34 +2193,34 @@ function StageForside () {
                         <div className="stage-main-small-section">
                             <div className="match-loader display" id="stage-loader2"></div>
                                 <div className="stage-section-indhold" id="stage-main2">
-                                    <div className="stage-section-top">
+                                    <div className="stage-kampe-top" style={{paddingTop: "10px"}}>
                                         <p className="stage-kampe-h1">Favoritter</p>
                                     </div>
                                     <ul>
                                         {favoritter.length > 0 && favoritter.map((item) => {
-                var linkURL = "/stage/team?team=" + item.id;
-                return (
-                    <li key={item.name + item.image} className="display" style={{width: "100%"}}>
-                        <div className="stage-team">
-                            <Link href={linkURL}>
-                                <div className="stage-kampe-team2">
-                                    <div className="stage-kampe-teams-div">
-                                        <Image width="25px" height="25px" src={item.image} className="stage-teams-img" />
-                                        <div className="stage-teams-element">
-                                            <p className="stage-teams-h1">{item.name}</p>
-                                            <p className="stage-teams-h2">{item.liga}</p>
-                                        </div>
-                                    </div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-                                        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                    </svg>
-                                </div>
-                            </Link>
-                        </div>
-                    </li>
-                    );
-                }
-            )}
+                                            return (
+                                                <li key={item.name + item.image} className="display" style={{width: "100%"}}>
+                                                    <div className="stage-team">
+                                                        <Link href={"/stage/team?team=" + item.id}>
+                                                            <div className="stage-kampe-team2">
+                                                                <div className="stage-kampe-teams-div">
+                                                                    <div className="stage-kampe-team">
+                                                                        <Image width="22px" height="22px" alt="." src={item.image} className="stage-img" />
+                                                                        <div className="stage-teams-element">
+                                                                            <p className="stage-teams-h1">{item.name}</p>
+                                                                            <p className="stage-teams-h2">{item.liga}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
+                                                                    <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                                </svg>
+                                                            </div>
+                                                        </Link>
+                                                    </div>
+                                                </li>
+                                            );
+                                        })}
                                         {favoritter.length <= 0 && <div className="stage-team" style={{backgroundColor: "var(--surface)", marginBottom: "15px"}} onClick={() => {showSearch()}}>
                     <div className="stage-kampe-team2">
                         <div className="stage-kampe-teams-div">
@@ -2197,105 +2236,31 @@ function StageForside () {
                                     </ul>
                                 </div>
                                 <div className="stage-section-indhold" id="stage-main3">
-                                    <div className="stage-kampe-top">
+                                    <div className="stage-kampe-top" style={{paddingTop: "10px"}}>
                                         <p className="stage-kampe-h1">Populære hold</p>
                                     </div>
-                                    <div className="stage-team">
-                                        <Link href="/stage/team?team=18583">
-                                            <div className="stage-kampe-team2">
-                                            <div className="stage-kampe-teams-div">
-                                                <Image width="18px" height="18px" src="https://cdn.sportmonks.com/images/soccer/teams/23/18583.png" className="stage-teams-img" />
-                                                <div className="stage-teams-element">
-                                                    <p className="stage-teams-h1">Danmark</p>
-                                                    <p className="stage-teams-h2">Landshold</p>
-                                                </div>
+                                    {popular.map((team) => {
+                                        return (
+                                            <div className="stage-team">
+                                                <Link href={"/stage/team?team=" + team.id}>
+                                                    <div className="stage-kampe-team2">
+                                                        <div className="stage-kampe-teams-div">
+                                                            <div className="stage-kampe-team">
+                                                                <Image width="22px" height="22px" alt="." src={team.img} className="stage-img" />
+                                                                <div className="stage-teams-element">
+                                                                    <p className="stage-teams-h1">{team.name}</p>
+                                                                    <p className="stage-teams-h2">{team.liga}</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
+                                                            <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+                                                        </svg>
+                                                    </div>
+                                                </Link>
                                             </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        </div>
-                                        </Link>
-                                    </div>
-                                    <div className="stage-team">
-                                        <Link href="/stage/team?team=18647">
-                                        <div className="stage-kampe-team2">
-                                            <div className="stage-kampe-teams-div">
-                                                <Image width="18px" height="18px" src="https://cdn.sportmonks.com/images/soccer/teams/23/18647.png" className="stage-teams-img" />
-                                                <div className="stage-teams-element">
-                                                    <p className="stage-teams-h1">Frankrig</p>
-                                                    <p className="stage-teams-h2">Landshold</p>
-                                                </div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        </div>
-                                        </Link>
-                                    </div>
-                                    <div className="stage-team">
-                                        <Link href="/stage/team?team=8">
-                                        <div className="stage-kampe-team2">
-                                            <div className="stage-kampe-teams-div">
-                                                <Image width="18px" height="18px" src="https://cdn.sportmonks.com/images/soccer/teams/8/8.png" className="stage-teams-img" />
-                                                <div className="stage-teams-element">
-                                                    <p className="stage-teams-h1">Liverpool</p>
-                                                    <p className="stage-teams-h2">Premier League</p>
-                                                </div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        </div>
-                                        </Link>
-                                    </div>
-                                    <div className="stage-team">
-                                        <Link href="/stage/team?team=3468">
-                                        <div className="stage-kampe-team2">
-                                            <div className="stage-kampe-teams-div">
-                                                <Image width="18px" height="18px" src="https://cdn.sportmonks.com/images/soccer/teams/12/3468.png" className="stage-teams-img" />
-                                                <div className="stage-teams-element">
-                                                    <p className="stage-teams-h1">Real Madrid</p>
-                                                    <p className="stage-teams-h2">La Liga</p>
-                                                </div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        </div>
-                                        </Link>
-                                    </div>
-                                    <div className="stage-team">
-                                        <Link href="/stage/team?team=14">
-                                        <div className="stage-kampe-team2">
-                                            <div className="stage-kampe-teams-div">
-                                                <Image width="18px" height="18px" src="https://cdn.sportmonks.com/images/soccer/teams/14/14.png" className="stage-teams-img" />
-                                                <div className="stage-teams-element">
-                                                    <p className="stage-teams-h1">Manchester United</p>
-                                                    <p className="stage-teams-h2">Premier League</p>
-                                                </div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        </div>
-                                        </Link>
-                                    </div>
-                                    <div className="stage-team">
-                                        <Link href="/stage/team?team=85">
-                                        <div className="stage-kampe-team2">
-                                            <div className="stage-kampe-teams-div">
-                                                <Image width="18px" height="18px" src="https://cdn.sportmonks.com/images/soccer/teams/21/85.png" className="stage-teams-img" />
-                                                <div className="stage-teams-element">
-                                                    <p className="stage-teams-h1">FC København</p>
-                                                    <p className="stage-teams-h2">Superliga</p>
-                                                </div>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" className="team-icon" viewBox="0 0 16 16">
-        <path fillRule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-        </svg>
-        </div>
-                                        </Link>
-                                    </div>
+                                        );
+                                    })}
                                 </div>
                         </div>
                         {/* <div className="stage-main-small-section">

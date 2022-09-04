@@ -14,23 +14,23 @@
   }
   
   .inf-h1 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     font-size: 32px;
     padding-top: 10px;
     color: var(--softBlack);
   }
   
   .inf-h2 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     font-size: 17px;
     color: var(--softBlack);
   }
   
   .inf-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     opacity: 0.7;
     font-size: 15px;
     padding-top: 10px;
@@ -107,19 +107,21 @@
   .hero-info-block-h1 {
     color: #292929;
     font-size: clamp(32px, 5vw, 44px);
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 700;
   }
   
   .hero-info-block-h1 span {
     color: #292929;
     font-size: clamp(32px, 5vw, 44px);
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 700;
   }
   
   .hero-info-block-h2 {
     color: #566578;
     font-size: clamp(10px, 2vw, 13px);
-    font-family: Open Sans;
+    font-family: Inter;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -127,7 +129,7 @@
   .hero-info-block-h2 span {
     color: #566578;
     font-size: clamp(10px, 2vw, 13px);
-    font-family: Open Sans;
+    font-family: Inter;
     font-weight: 700;
     text-transform: uppercase;
   }
@@ -193,45 +195,6 @@
   
   .ny-kupon-left {
     margin-top: 40px;
-  }
-  
-  .ny-kupon-h2 {
-    font-size: 14px;
-    font-family: CircularBook;
-    font-weight: 100;
-    color: var(--softBlack);
-    opacity: 0.7;
-  }
-  
-  .ny-kupon-h1 {
-    font-size: clamp(25px, 5vw, 40px);
-    font-family: CircularBook;
-    font-weight: 100;
-    color: var(--softBlack);
-    margin-top: 5px;
-    line-height: clamp(35px, 5vw, 50px);
-  }
-  
-  .ny-kupon-p {
-    font-size: clamp(12px, 3vw, 16px);
-    font-family: CircularLight;
-    font-weight: 100;
-    color: var(--softBlack);
-    margin-top: 10px;
-  }
-  
-  .ny-kupon-a {
-    font-size: clamp(12px, 3vw, 16px);
-    font-family: CircularLight;
-    font-weight: 100;
-    margin-top: 5px;
-    cursor: pointer;
-    color: var(--primary);
-    width: 200px;
-  }
-  
-  .ny-kupon-a:hover {
-    text-decoration: underline;
   }
   
   .nyheder-kupon {
@@ -326,25 +289,25 @@
   .fsection-h1 {
     font-size: clamp(30px, 5vw, 46px);
     color: var(--black);
-    font-weight: 100;
+    font-weight: 600;
     padding-bottom: 10px;
-    font-family: CircularMedium;
+    font-family: Inter;
   }
   
   .fsection-h3 {
     font-size: 17px;
     color: var(--softBlack);
-    font-weight: 100;
-    font-family: CircularLight;
+    font-weight: 400;
+    font-family: Inter;
     padding-bottom: 45px;
   }
   
   .fsection-h4 {
     font-size: clamp(23px, 4vw, 25px);
     color: var(--black);
-    font-weight: 100;
+    font-weight: 600;
     padding-bottom: 10px;
-    font-family: CircularMedium;
+    font-family: Inter;
   }
 
   .forside-figure {
@@ -453,16 +416,16 @@
   .fsection-h5 {
     font-size: clamp(14px, 3vw, 15px);
     color: var(--primary);
-    font-weight: 100;
+    font-weight: 600;
     padding-bottom: 15px;
-    font-family: CircularMedium;
+    font-family: Inter;
   }
   
   .fsection-p {
     font-size: clamp(14px, 3vw, 15px);
     color: var(--softBlack);
-    font-weight: 100;
-    font-family: CircularLight;
+    font-weight: 400;
+    font-family: Inter;
     padding-bottom: 10px;
   }
   
@@ -473,11 +436,11 @@
   .fsection-a {
     font-size: clamp(14px, 3vw, 15px);
     color: var(--primary);
-    font-weight: 100;
+    font-weight: 400;
     opacity: 0.8;
     transition: 0.2s;
     cursor: pointer;
-    font-family: CircularLight;
+    font-family: Inter;
   }
   
   .help-top {
@@ -510,19 +473,19 @@
   
   .tp-h1 {
     font-size: 28px;
-    font-weight: 100;
+    font-weight: 500;
     color: #fff;
     padding-top: 20px;
-    font-family: CircularLight;
+    font-family: Inter;
   }
   
   .tp-h2 {
     font-size: 14px;
-    font-weight: 100;
+    font-weight: 400;
     cursor: pointer;
     color: #7980b2;
     padding-top: 5px;
-    font-family: CircularLight;
+    font-family: Inter;
   }
   
   .tp-h2:hover {
@@ -606,8 +569,8 @@
   }
   
   .offer-p {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     font-size: clamp(13px, 2vw, 16px);
     color: var(--primary);
     padding-bottom: 3px;
@@ -626,16 +589,16 @@
   .plan-h1 {
     font-size: clamp(20px, 5vw, 38px);
     padding: 0 3vw;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     color: #fff;
   }
   
   .plan-h2 {
     font-size: clamp(12px, 3vw, 17px);
     text-align: center;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: #fff;
     padding: 0 3vw;
     max-width: 100%;
@@ -702,16 +665,16 @@
   
   .nl-h1 {
     font-size: 42px;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--softBlack);
   }
   
   .nl-h2 {
     font-size: 17px;
     text-align: center;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--softBlack);
     opacity: 0.7;
     margin-top: 15px;
@@ -744,7 +707,8 @@
   .main-forside-component-h2 {
     color: var(--onBackground);
     font-size: 47px;
-    font-family: CircularBold;
+    font-family: Inter;
+    font-weight: 600;
     opacity: 0.95;
   }
   
@@ -986,14 +950,16 @@
   .plan-element-identifier {
     font-size: clamp(13px, 1.5vw, 17px);
     color: var(--black);
-    font-family: CircularBook;
+    font-family: Inter;
+    font-weight: 600;
     text-align: center;
   }
   
   .plan-element-pris {
     font-size: clamp(35px, 4vw, 48px);
     color: var(--primary);
-    font-family: CircularBlack;
+    font-family: Inter;
+    font-weight: 600;
     text-align: center;
   }
   
@@ -1002,8 +968,8 @@
     opacity: 0.7;
     text-align: center;
     color: var(--softBlack);
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     margin-top: -8px;
   }
   
@@ -1011,9 +977,9 @@
     font-size: 14px;
     opacity: 0.7;
     color: var(--onBackground);
-    font-family: CircularBook;
+    font-family: Inter;
     display: inline-block;
-    font-weight: 100;
+    font-weight: 500;
     padding: 10px 0px;
   }
   
@@ -1084,9 +1050,9 @@
   }
   
   .plan-func-h1 {
-    font-family: CircularBook;
+    font-family: Inter;
     color: #fff;
-    font-weight: 100;
+    font-weight: 400;
     font-size: 17px;
   }
   
@@ -1106,30 +1072,30 @@
   }
   
   .plan-func-h2 {
-    font-family: CircularBook;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 400;
     font-size: 15px;
   }
   
   .plan-func-p {
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 400;
     font-size: 15px;
   }
   
   .plan-func-h3 {
-    font-family: CircularBook;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 400;
     font-size: 15px;
   }
   
   .plan-func-h4 {
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 500;
     font-size: 13px;
   }
   

@@ -1662,9 +1662,11 @@ function StageHeader () {
                                     </div>
                                 </div>
                                 <div className="user-divider"></div>
-                                <div className="user-element">
-                                    <p className="user-element-p">Din profil</p>
-                                </div>
+                                <Link href="/stage/profil">
+                                    <div className="user-element">
+                                        <p className="user-element-p">Din profil</p>
+                                    </div>
+                                </Link>
                                 {getAdmin()}
                                 <div className="user-element" onClick={() => logout()}>
                                     <p className="user-element-p">Log ud</p>

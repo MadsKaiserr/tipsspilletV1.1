@@ -3,41 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;900&display=swap');
 @import url('https://rsms.me/inter/inter.css');
 
-@font-face {
-  font-family: 'CircularBlack';
-  src: local('CircularBlack'),
-    url(./fonts/CircularStd-Black.otf) format('opentype');
-  font-display: swap
-}
-
-@font-face {
-  font-family: 'CircularBold';
-  src: local('CircularBold'),
-    url(./fonts/CircularStd-Bold.otf) format('opentype');
-  font-display: swap
-}
-
-@font-face {
-  font-family: 'CircularLight';
-  src: local('CircularLight'),
-    url(./fonts/CircularStd-Light.otf) format('opentype');
-  font-display: swap
-}
-
-@font-face {
-  font-family: 'CircularMedium';
-  src: local('CircularMedium'),
-    url(./fonts/CircularStd-Medium.otf) format('opentype');
-  font-display: swap
-}
-
-@font-face {
-  font-family: 'CircularBook';
-  src: local('CircularBook'),
-    url(./fonts/CircularStd-Book.otf) format('opentype');
-  font-display: swap
-}
-
   :root {
     /* Primary colors */
     --primary: #3d6deb;
@@ -186,8 +151,8 @@
   }
   
   .pages-h1 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     color: #fff;
     font-size: clamp(34px, 4vw, 54px);
     text-align: center;
@@ -195,8 +160,8 @@
   }
   
   .pages-h1 span {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 600;
     color: #fff;
     font-size: clamp(34px, 4vw, 54px);
     text-align: center;
@@ -204,8 +169,8 @@
   }
   
   .pages-p {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: #fff;
     opacity: 0.85;
     font-size: clamp(12px, 1.5vw, 16px);
@@ -215,8 +180,8 @@
   }
   
   .pages-where-h1 {
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     color: #fff;
     text-transform: uppercase;
     opacity: 0.9;
@@ -237,8 +202,8 @@
   }
   
   .pages-where-h2 {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 300;
     font-size: 14px;
     text-transform: uppercase;
     color: #fff;
@@ -421,11 +386,11 @@
   .main-component-h1-h2 {
     color: var(--onBackground);
     font-size: clamp(17px, 3vw, 20px);
-    font-weight: 100;
+    font-weight: 500;
     padding: 10px 0px;
     text-align: center;
     opacity: 0;
-    font-family: CircularBook;
+    font-family: Inter;
     animation: 1000ms ease 0s 1 normal none running fadeLeft;
     animation-fill-mode: forwards;
     animation-delay: 0.8s;
@@ -643,8 +608,8 @@
   .nav-btn-outline {
     color: var(--primary);
     font-size: clamp(12px, 2.5vw, 15px);
-    font-family: CircularBook;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 500;
     padding: clamp(10px, 2vw, 12px) clamp(20px, 1vw, 35px);
     margin-left: 50px;
     border-radius: 3px;
@@ -658,14 +623,14 @@
   .main-btn-outline {
     padding: 12px 35px;
     color: var(--primary);
-    font-weight: 100;
+    font-weight: 400;
     font-size: 14px;
     border-radius: 3px;
     cursor: pointer;
     border: 1px var(--primary) solid;
     background-color: transparent;
     transition: 0.2s;
-    font-family: CircularLight;
+    font-family: Inter;
   }
   
   .main-btn-outline:hover {
@@ -675,10 +640,10 @@
   .main-btn-login {
     padding: 12px 35px;
     color: #fff;
-    font-weight: 100;
+    font-weight: 400;
     font-size: 15px;
     border-radius: 3px;
-    font-family: CircularBook;
+    font-family: Inter;
     border: 0px;
     cursor: pointer;
     background-color: var(--primary);

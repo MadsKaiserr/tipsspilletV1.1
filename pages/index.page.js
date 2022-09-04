@@ -101,7 +101,7 @@ export default function Home() {
                         <span>s</span>
                     </div>
                 </h1>
-                <h2 className="main-component-h1-h2" id="test">Dyst venner og familie i betting uden risiko.&#128640;</h2>
+                <h2 className="main-component-h1-h2">Dyst venner og familie i betting uden risiko.&#128640;</h2>
                 <div className="hero-divider"></div>
                 <Link href="/gruppespil">
                     <button className="main-btn-default hero-btn">Find gruppespil</button>

@@ -70,8 +70,8 @@
     font-size: 15px;
     transition: 0.1s;
     color: var(--softBlack);
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
   }
   
   .signup-check {
@@ -107,8 +107,8 @@
     margin-right: 3px;
     color: var(--softBlack);
     opacity: 0.7;
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
   }
   
   .signup-checked {
@@ -121,8 +121,8 @@
     margin-right: 3px;
     opacity: 0.7;
     color: var(--softBlack);
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     text-decoration: underline dotted;
     cursor: pointer;
   }
@@ -268,8 +268,8 @@
     width: 100%;
     text-align: center;
     color: var(--softBlack);
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 14px;
     opacity: 0.5;
     padding: 10px 0px;
@@ -284,9 +284,9 @@
     border: 0px;
     cursor: pointer;
     color: #fff;
-    font-family: CircularBook;
+    font-family: Inter;
     margin-bottom: 10px;
-    font-weight: 100;
+    font-weight: 500;
     font-size: 14px;
     display: flex;
     align-items: center;
@@ -336,9 +336,9 @@
   }
   
   .login-text-h1 {
-    font-family: CircularBold;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 700;
     font-size: 24px;
   }
   
@@ -350,11 +350,11 @@
   }
   
   .login-form-p {
-    font-family: CircularBook;
+    font-family: Inter;
     color: var(--softBlack);
     opacity: 0.9;
     font-size: 15px;
-    font-weight: 100;
+    font-weight: 500;
     margin-bottom: 5px;
   }
   
