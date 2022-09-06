@@ -1566,11 +1566,11 @@ function StageHeader () {
                             <Image width="32px" height="32px" src={flag} alt="Danmarks flag" className="nav-flag" onClick={() => {document.getElementById("userDropdownFlag").classList.toggle("display");}} />
                             <div className="user-dropdownFlag" id="userDropdownFlag">
                                 <div className="user-elementFlag">
-                                    <Image width="28px" height="20px" src={flag} alt="Danmark" className="user-flag-icon" />
+                                    <Image width="22px" height="22px" src={flag} alt="Danmark" className="user-flag-icon" />
                                     <p className="user-element-p">Dansk</p>
                                 </div>
                                 <div className="user-elementFlag">
-                                    <Image width="28px" height="20px" src={england} alt="England" className="user-flag-icon" />
+                                    <Image width="22px" height="22px" src={england} alt="England" className="user-flag-icon" />
                                     <p className="user-element-p">Engelsk</p>
                                 </div>
                             </div>
@@ -1597,7 +1597,9 @@ function StageHeader () {
                                 return (
                                     <li key={item.klub + item.url} className="display" style={{width: "100%"}}>
                                         <div className="hit-elem" style={{width: "100%"}} onClick={() => {closeSearch(); window.open(item.url, "_SELF")}}>
-                                            <Image height="18px" width="18px" src={item.img} alt="Fodboldklub" className="hit-img" />
+                                            <div className="hit-con">
+                                                <Image width="27px" height="27px" alt="." src={item.img} className="hit-img" />
+                                            </div>
                                             <div className="hit-info">
                                                 <p className="hit-h1">{item.klub}</p>
                                                 <p className="hit-h2">{item.land}</p>
@@ -1629,7 +1631,7 @@ function StageHeader () {
                                 <Link href="#"><a className="nav-error-a">Find ud af hvorfor</a></Link>
                             </div>
                             <div className="nav-error">
-                                <p className="nav-info-p">Alpha - V. 1.0.8</p>
+                                <p className="nav-info-p">Alpha - V. 1.1.0</p>
                             </div>
                             <Link href="/stage/indstillinger">
                                 <div className="nav-link">
@@ -1687,11 +1689,11 @@ function StageHeader () {
                                             <Image width="32px" height="32px" src={flag} alt="Danmarks flag" className="nav-flag" onClick={() => {document.getElementById("userDropdownFlag").classList.toggle("display");}} />
                                             <div className="user-dropdownFlag" id="userDropdownFlag">
                                                 <div className="user-elementFlag">
-                                                    <Image width="28px" height="20px" src={flag} alt="Danmark" className="user-flag-icon" />
+                                                    <Image width="22px" height="22px" src={flag} alt="Danmark" className="user-flag-icon" />
                                                     <p className="user-element-p">Dansk</p>
                                                 </div>
                                                 <div className="user-elementFlag">
-                                                    <Image width="28px" height="20px" src={england} alt="England" className="user-flag-icon" />
+                                                    <Image width="22px" height="22px" src={england} alt="England" className="user-flag-icon" />
                                                     <p className="user-element-p">Engelsk</p>
                                                 </div>
                                             </div>
@@ -1726,7 +1728,7 @@ function StageHeader () {
                                                 <Link href="#"><a className="nav-error-a">Find ud af hvorfor</a></Link>
                                             </div>
                                             <div className="nav-error">
-                                                <p className="nav-info-p">Alpha - V. 1.0.8</p>
+                                                <p className="nav-info-p">Alpha - V. 1.1.0</p>
                                             </div>
                                             <Link href="/stage/indstillinger">
                                                 <div className="nav-link">

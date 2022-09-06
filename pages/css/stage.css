@@ -1798,6 +1798,15 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  .stage-section-top {
+    width: 100%;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+  }
   
   .stage-live-pulse {
     border-radius: 50%;
@@ -1828,16 +1837,6 @@
       }
   }
   
-  .stage-section-top {
-    width: 100%;
-    padding: 5px 15px;
-    padding-left: 0px !important;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    justify-content: space-between;
-  }
-  
   .stage-kampe-odds-fix {
     height: 0px;
     width: 0px;
@@ -1847,8 +1846,9 @@
     width: 100%;
     cursor: pointer;
     border-bottom: 1px #ebebeb8b solid;
+    background-color: #fff;
     position: relative;
-    padding: 0px 10px;
+    padding: 0px;
     transition: 0.2s;
   }
   
@@ -1968,7 +1968,8 @@
   
   .stage-live-scores p {
     color: #fff !important;
-    font-family: CircularLight !important;
+    font-family: Inter !important;
+    font-weight: 400 !important;
   }
   
   .stage-team {
@@ -2445,14 +2446,16 @@
   
   .error-container-h1 {
     color: var(--black);
-    font-family: CircularBook;
+    font-family: Inter;
     font-size: 15px;
+    font-weight: 600;
     margin-bottom: 3px;
   }
   
   .error-container-p {
     color: var(--softBlack);
-    font-family: CircularLight;
+    font-family: Inter;
+    font-weight: 400;
     font-size: 13px;
   }
   
@@ -2481,7 +2484,10 @@
 
   .md-container {
     position: absolute;
-    top: 65px;
+    top: 60px;
+    display: none;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     left: 0px;
     height: 45px;
@@ -2489,6 +2495,7 @@
     background-color: #fff;
     gap: 10px;
     border-bottom: 1px #ebebeb solid;
+    border-top: 1px #ebebeb solid;
   }
 
   .md-sticky {
@@ -2525,6 +2532,7 @@
     border-bottom: 2px solid transparent;
     padding: 0px;
     display: flex;
+    cursor: pointer;
     justify-content: center;
     text-align: center;
     align-items: center;
@@ -2553,6 +2561,9 @@
     padding: 0px 15px;
     padding-bottom: 10px !important;
     max-height: 250px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.452);
+    max-width: 700px;
     overflow: hidden;
     position: relative;
   }
@@ -2578,7 +2589,8 @@
 
   .profil-main-container {
     padding: 20px 0px;
-    background-color: var(--stageSurface);
+    width: 100%;
+    max-width: 700px;
   }
 
   .setting-profil-billede {
@@ -2608,13 +2620,95 @@
     color: var(--black);
   }
 
+  .noti-main {
+    background-color: var(--stageSurface);
+    padding: 125px 25%;
+    min-height: 650px;
+}
+
+.noti-h1 {
+    font-size: 27px;
+    font-family: Inter;
+    color: var(--softBlack);
+    font-weight: 600;
+}
+
+.noti-section {
+    background-color: #fff;
+    padding: 15px 30px;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 20px auto;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.03);
+}
+
+.noti-section-success {
+    background-color: #fff;
+    padding: 15px 26px;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 20px auto;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.03);
+    border-left: 4px var(--green) solid;
+}
+
+.noti-section-error {
+    background-color: #fff;
+    padding: 15px 26px;
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 20px auto;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.03);
+    border-left: 4px var(--red) solid;
+}
+
+.noti-sec-h1 {
+    font-size: 20px;
+    font-family: Inter;
+    color: var(--softBlack);
+    font-weight: 500;
+}
+
+.noti-sec-p {
+    font-size: 15px;
+    font-family: Inter;
+    color: var(--softBlack);
+    font-weight: 400;
+    opacity: 0.9;
+    padding-top: 1px;
+    padding-bottom: 5px;
+}
+
+.noti-span {
+    font-family: Inter;
+    color: var(--softBlack);
+    font-weight: 600;
+}
+
+.noti-sec-dato {
+    font-size: 12px;
+    font-family: Inter;
+    color: var(--softBlack);
+    font-weight: 400;
+    opacity: 0.5;
+}
+
   .setting-profil-p {
     font-family: Inter;
     font-weight: 400;
     font-size: 11px;
-
     color: var(--softBlack);
     text-decoration: underline;
+    cursor: pointer;
   }
 
   .settings-element {
@@ -2741,16 +2835,26 @@
     font-size: 13px;
     color: #fff;
   }
+
+  .odd-notusable {
+    background-color: #ebebeb !important;
+    color: var(--black) !important;
+    opacity: 0.6 !important;
+  }
+
+  .odd-notusable:hover {
+    background-color: #ebebeb !important;
+    color: var(--black) !important;
+    opacity: 0.6 !important;
+  }
   
   .odd-off {
-    background-color: #ebebeb !important;
+    background-color: #f8e325 !important;
     color: var(--black);
-    opacity: 0.6 !important;
-    cursor: default;
   }
   
   .odd-off:hover {
-    background-color: #ebebeb !important;
+    background-color: #ecd92d !important;
   }
   
   .odd-off .odd-data-p {
@@ -2784,7 +2888,7 @@
     margin-bottom: 20px;
     overflow: hidden;
     box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.05) !important;
-    background-color: #fff;
+    background-color: transparent;
     border-radius: 5px;
     border: 1px solid #ebebeb;
   }
@@ -2893,6 +2997,41 @@
 .setup-btn:hover {
   background-color: var(--primary) !important;
   color: #fff !important;
+}
+
+.faq-btn {
+  padding: 11px 20px;
+  color: var(--primary);
+  font-weight: 500;
+  font-family: Inter;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 0px;
+  cursor: pointer;
+  background-color: var(--third);
+  transition: 0.2s;
+  text-align: center;
+}
+
+.faq-btn:hover {
+  background-color: var(--primary) !important;
+  color: #fff !important;
+}
+
+.faq-btn-outline {
+  color: #fff;
+  background-color: var(--primary);
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 500;
+  padding: 10px 22px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.faq-btn-outline:hover {
+  background-color: var(--primaryAccent) !important;
 }
 
 .setup-hit-pull {

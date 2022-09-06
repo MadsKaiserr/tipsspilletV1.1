@@ -97,7 +97,7 @@ function StageMatcharticle () {
     const [indsats, setIndsats] = useState(0);
     const [udbetaling, setUdbetaling] = useState(0);
     const [currentMoney, setCurrentMoney] = useState(0);
-    const [kuponBtn, setKuponBtn] = useState("kupon-btn odd-off");
+    const [kuponBtn, setKuponBtn] = useState("kupon-btn odd-notusable");
     const [returnOdds, setReturnOdds] = useState(1);
 
     const [notUsableBtn, setNotUsableBtn] = useState([]);
@@ -674,7 +674,7 @@ function StageMatcharticle () {
         setReturnOdds(returnOddsNew);
         setUdbetaling(udbetalingNew);
         if ((odds.length - 1) <= 0) {
-            setKuponBtn("kupon-btn odd-off");
+            setKuponBtn("kupon-btn odd-notusable");
             document.getElementById("kombination-content").classList.remove("display");
             document.getElementById("singler-content").classList.remove("display");
 
@@ -989,7 +989,7 @@ function StageMatcharticle () {
             setReturnOdds(1);
             setIndsats(0);
             setUdbetaling(0);
-            setKuponBtn("kupon-btn odd-off");
+            setKuponBtn("kupon-btn odd-notusable");
     
             for (var l in notUsableBtn) {
                 const el = document.getElementById(notUsableBtn[l]);
@@ -1039,6 +1039,47 @@ function StageMatcharticle () {
             sessionStorage.setItem("odds", JSON.stringify([...odds, jsonNote]))
         } else if (odds.length > 5) {
             setNotiMessage("error", "For mange væddemål", "Du har allerede 6 ud af 6 mulige væddemål pr. kupon.")
+        } else if (notUsableBtn.includes(btnId)) {
+            rem3wayBet(parseInt(matchID), type, row);
+        }
+    }
+
+    function rem3wayBet(matchId, type, result) {
+        var returnOddsNew = 1;
+        var udbetalingNew = 0;
+        var oddsSession = JSON.parse(sessionStorage.getItem("odds"));
+        for (var y in oddsSession) {
+            if (oddsSession[y].odds_result !== result + "") {
+                returnOddsNew = returnOddsNew * parseFloat(oddsSession[y].probability);
+                udbetalingNew = returnOddsNew * indsats;
+            }
+        }
+        for (var y in oddsSession) {
+            if (oddsSession[y].match === parseInt(matchId) && oddsSession[y].odds_result === result + "") {
+                const betIdIndex = type+matchId+"-"+oddsSession[y].odds_result;
+
+                var storageReplica = JSON.parse(sessionStorage.getItem("notUsableBtn"));
+                var indexRep = storageReplica.indexOf(betIdIndex);
+                storageReplica.splice(indexRep, 1);
+                setNotUsableBtn(storageReplica);
+                sessionStorage.setItem("notUsableBtn", JSON.stringify(storageReplica));
+
+                var oddsSessionIndex = oddsSession.findIndex(item => item.match === matchId && item.odds_result === result + "");
+                oddsSession.splice(oddsSessionIndex, 1);
+                setOdds(oddsSession);
+                sessionStorage.setItem("odds", JSON.stringify(oddsSession));
+            }
+        }
+        console.log("5", returnOddsNew)
+        setReturnOdds(returnOddsNew);
+        setUdbetaling(udbetalingNew);
+        if ((odds.length - 1) <= 0) {
+            setKuponBtn("kupon-btn odd-notusable");
+            document.getElementById("kombination-content").classList.remove("display");
+            document.getElementById("singler-content").classList.remove("display");
+
+            document.getElementById("kombination-bottom").classList.add("display");
+            document.getElementById("singler-bottom").classList.remove("display");
         }
     }
 

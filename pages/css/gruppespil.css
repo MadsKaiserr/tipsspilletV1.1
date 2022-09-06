@@ -380,17 +380,17 @@
   
   .main-modal-h1 {
     font-size: 20px;
-    font-family: CircularBook;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 600;
   }
   
   .main-modal-h2 {
     font-size: 16px;
     padding-top: 5px;
-    font-family: CircularLight;
+    font-family: Inter;
     color: var(--softBlack);
-    font-weight: 100;
+    font-weight: 400;
   }
   
   .modal-p {
@@ -874,7 +874,7 @@
       border: 1px var(--primaryAccent);
       color: #fff;
       font-size: 12px;
-      font-family: Open Sans;
+      font-family: Inter;
       font-weight: 400;
       border-radius: 3px;
       vertical-align: top;
@@ -893,7 +893,7 @@
     border: 1px var(--primaryAccent);
     color: #fff;
     font-size: 12px;
-    font-family: Open Sans;
+    font-family: Inter;
     font-weight: 400;
     border-radius: 3px;
     vertical-align: top;

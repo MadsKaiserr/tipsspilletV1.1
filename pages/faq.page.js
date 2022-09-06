@@ -1,11 +1,22 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import Header from './layout/header';
+import StageIphone from './img/Stage-Iphone.png';
 
 import FaqSite from './components/faq';
+import Image from 'next/image'
 import Head from 'next/head'
+import Link from 'next/link'
  
 function Faq () {
+    
+    useEffect(() => {
+        window.addEventListener("scroll", function(){
+            if (document.getElementById("designer-hero")) {
+                document.getElementById("designer-hero").classList.toggle("designer-relative", window.scrollY > 420);
+            }
+        })
+    }, [])
 
     return (
         <>
@@ -21,18 +32,48 @@ function Faq () {
                 <meta property="og:description" content="FAQ - Få svar på dine spørgsmål - Hvordan opretter man gruppespil? Hvordan tilmelder jeg mig præmiedyser? Hvordan inviterer jeg folk til mit gruppespil?" />
             </Head>
             <Header />
-            <div className="pages-top" id="faq-top2">
-                <div className="pages-where">
-                    <h3 className="pages-where-h1">FAQ</h3>
-                    <div className="pages-where-splitter"></div>
-                    <h2 className="pages-where-h2">Spørgsmål og svar</h2>
+            {/* <div className="route-top">
+                <h1 className="route-h1">Ofte stillede spørgsmål<div className="route-pynt"><div className="route-pynt1"></div><div className="route-pynt2"></div><div className="route-pynt3"></div></div></h1>
+                <h2 className="route-h2">Få svar på de spørgsmål du skulle sidde med vedrørende Tipsspillet. Kan du ikke finde svar på dit spørgsmål?<span className="route-h2-a">Kontakt vores team</span>.</h2>
+                <br /><Link href="/kontakt"><a className="faq-btn">Skriv til os</a></Link>
+                <div className="route-img">
+                    <Image width="216px" height="400px" src={StageIphone} />
                 </div>
-                <h1 className="pages-h1">Få svar på dine<br />spørgsmål.</h1>
+            </div> */}
+            <div className="designer-container">
+                <div className="designer-element-fixed" style={{backgroundColor: "var(--stageSurface)"}}>
+                    <div className="designer-fixed" id="designer-hero">
+                        <div className="designer-left">
+                            <h1 className="route-h1">Ofte stillede spørgsmål<div className="route-pynt"><div className="route-pynt1"></div><div className="route-pynt2"></div><div className="route-pynt3"></div></div></h1>
+                            <h2 className="route-h2">Få svar på de spørgsmål du skulle sidde med vedrørende Tipsspillet. Kan du ikke finde svar på dit spørgsmål?<span className="route-h2-a">Kontakt vores team</span>.</h2>
+                            <br /><Link href="/kontakt"><a className="faq-btn">Skriv til os</a></Link>
+                        </div>
+                    </div>
+                    {/* <div className="route-img">
+                        <Image width="216px" height="400px" src={StageIphone} />
+                    </div> */}
+                </div>
+                <div className="designer-element">
+                    <h3 className="faq-h1">FAQ - Spørgsmål og svar</h3>
+                    <h4 className="faq-h2">Har du spørgsmål? Vi er her for at hjælpe</h4>
+                    <FaqSite />
+                </div>
             </div>
-            <svg xmlns="http://www.w3.org/2000/svg" id="faq-top" viewBox="0 0 1440 320" className="pages-parent-dir"><path className="pages-wave" fillOpacity="1" d="M0,224L48,208C96,192,192,160,288,144C384,128,480,128,576,133.3C672,139,768,149,864,181.3C960,213,1056,267,1152,261.3C1248,256,1344,192,1392,160L1440,128L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>
-            <div className="stage-main-container" style={{marginTop: "-100px", backgroundColor: "#fff"}}>
+            <div className="designer-container">
+                <div className="designer-hero">
+                    <p className="designer-hero-h2">Formålet</p>
+                    <h2 className="designer-hero-h1">Tipsspillets vision</h2>
+                    <p className="designer-hero-p">Dyst mod dine venner i et verdensomspændende betting-spil, helt uden at bruge en krone. Bet mod venner og familie, eller deltag i præmiedyster.</p>
+                    <br />
+                    <p className="designer-hero-p" style={{marginBottom: "10px"}}>Dyst mod dine venner i et verdensomspændende betting-spil, helt uden at bruge en krone. Bet mod venner og familie, eller deltag i præmiedyster.</p>
+                    <br /><Link href="/signup"><a className="faq-btn-outline">Kom igang</a></Link>
+                </div>
+            </div>
+            {/* <div className="stage-main-container" style={{marginTop: "-100px", backgroundColor: "#fff"}}>
+                <h3 className="faq-h1">FAQ - Spørgsmål og svar</h3>
+                <h4 className="faq-h2">Har du spørgsmål? Vi er her for at hjælpe</h4>
                 <FaqSite />
-            </div>
+            </div> */}
         </>
     )
 }

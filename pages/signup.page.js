@@ -6,13 +6,8 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Image from 'next/image'
 import FacebookLogin from 'react-facebook-login';
-import Header from './layout/header';
  
 function Signup () {
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-      }, [])
 
     const [message, setMessage] = useState("");
 
@@ -293,22 +288,21 @@ function Signup () {
 
     return (
         <>
-        <Head>
-            <title>Opret konto - Tipsspillet</title>
-            <link rel="canonical" href="https://www.tipsspillet.dk/signup" />
-            <meta name="description" content="Opret konto på Danmarks eneste gratis betting platform - Opret gratis konto, og bet for virtuelle penge mod venner og familie - Deltag i præmiedyster, og vind blandt andet billetter til fodboldkampe i parken." />
-            <meta name="author" content="Mads Kaiser" />
-            <meta name="keywords" content="tipsspillet opret konto, opret konto,signup,tipsspillet signup,lav konto,konto,min konto" />
-            <meta itemProp="name" content="Tipsspillet Opret Konto" />
-            <meta itemProp="description" content="Opret konto på Danmarks eneste gratis betting platform - Opret gratis konto, og bet for virtuelle penge mod venner og familie - Deltag i præmiedyster, og vind blandt andet billetter til fodboldkampe i parken." />
-            <meta property="og:title" content="Opret konto - Tipsspillet" />
-            <meta property="og:description" content="Opret konto på Danmarks eneste gratis betting platform - Opret gratis konto, og bet for virtuelle penge mod venner og familie - Deltag i præmiedyster, og vind blandt andet billetter til fodboldkampe i parken." />
-        </Head>
-        <Header />
-        <div className="signup-wave-top"></div>
-        <svg xmlns="http://www.w3.org/2000/svg" className="signup-wave" viewBox="0 0 1440 320">
-  <path d="M0,224L120,213.3C240,203,480,181,720,149.3C960,117,1200,75,1320,53.3L1440,32L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
-</svg>
+            <Head>
+                <title>Opret konto - Tipsspillet</title>
+                <link rel="canonical" href="https://www.tipsspillet.dk/signup" />
+                <meta name="description" content="Opret konto på Danmarks eneste gratis betting platform - Opret gratis konto, og bet for virtuelle penge mod venner og familie - Deltag i præmiedyster, og vind blandt andet billetter til fodboldkampe i parken." />
+                <meta name="author" content="Mads Kaiser" />
+                <meta name="keywords" content="tipsspillet opret konto, opret konto,signup,tipsspillet signup,lav konto,konto,min konto" />
+                <meta itemProp="name" content="Tipsspillet Opret Konto" />
+                <meta itemProp="description" content="Opret konto på Danmarks eneste gratis betting platform - Opret gratis konto, og bet for virtuelle penge mod venner og familie - Deltag i præmiedyster, og vind blandt andet billetter til fodboldkampe i parken." />
+                <meta property="og:title" content="Opret konto - Tipsspillet" />
+                <meta property="og:description" content="Opret konto på Danmarks eneste gratis betting platform - Opret gratis konto, og bet for virtuelle penge mod venner og familie - Deltag i præmiedyster, og vind blandt andet billetter til fodboldkampe i parken." />
+            </Head>
+            <div className="signup-wave-top"></div>
+            <svg xmlns="http://www.w3.org/2000/svg" className="signup-wave" viewBox="0 0 1440 320">
+                <path d="M0,224L120,213.3C240,203,480,181,720,149.3C960,117,1200,75,1320,53.3L1440,32L1440,0L1320,0C1200,0,960,0,720,0C480,0,240,0,120,0L0,0Z"></path>
+            </svg>
             <div className="signup-container">
                 <div className="signup-section">
                     <div className="signup-popup" id="info1">

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link'
  
 function Faq () {
 
@@ -69,33 +70,38 @@ function Faq () {
     ]
 
     function showQuestion(id) {
-        let q_p = document.getElementById(id+"-p");
         let q_a = document.getElementById(id+"-a");
         let q_i = document.getElementById(id+"-i");
-        q_p.classList.toggle("faq-q-active");
+        let q_i2 = document.getElementById(id+"-i2");
         q_a.classList.toggle("display");
-        q_i.classList.toggle("faq-chevron-active");
+        q_i.classList.toggle("display");
+        q_i2.classList.toggle("display");
     }
 
     return (
         <>
             <div className="faq-fix">
                 <div className="faq-input-con">
-                    <input type="text" className="faq-input" placeholder='Få svar på dine spørgsmål'/>
-                    <button className="faq-input-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="faq-input-icon" viewBox="0 0 16 16">
-<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-</svg>
-                    </button>
+                    <div className="faq-input">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="faq-input-icon" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                        <input type="text" placeholder="Få svar på dine spørgsmål" className="faq-field" />
+                    </div>
                 </div>
                 <ul className="faq-container">
                     {questions.map(question => {
                         return (
                             <li key={question.id} className="faq-element" onClick={() => {showQuestion(question.id)}}>
                                 <div className="faq-question">
-                                    <p className="faq-q" id={question.id + "-p"}>{question.name}</p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id={question.id + "-i"} className="faq-chevron" viewBox="0 0 16 16">
-                                        <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    <p className="faq-q">{question.name}</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id={question.id + "-i"} className="faq-chevron display" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id={question.id + "-i2"} className="faq-chevron" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                     </svg>
                                 </div>
                                 <ul className="faq-answer" id={question.id + "-a"}>
@@ -108,6 +114,12 @@ function Faq () {
                             </li>
                         );
                     })}
+                    <li key={"help"} className="faq-help">
+                        <div className="faq-question">
+                            <p className="faq-q">Kan du ikke finde din spørgsmål?</p>
+                            <br /><Link href="/kontakt"><a className="faq-btn">Skriv til os</a></Link>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </>

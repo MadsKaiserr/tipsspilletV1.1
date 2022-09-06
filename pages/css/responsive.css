@@ -673,6 +673,12 @@
   .hit-elem {
     padding: 10px 5% !important;
   }
+  .header-inline {
+    display: flex !important;
+  }
+  .md-container {
+    display: flex !important;
+  }
   .ab-left {
     display: none !important;
   }
@@ -723,6 +729,11 @@
     width: 20px !important;
   }
   .setup-input {
+    padding: 12px 15px !important;
+    font-size: 12px !important;
+    border-radius: 4px !important;
+  }
+  .faq-input {
     padding: 12px 15px !important;
     font-size: 12px !important;
     border-radius: 4px !important;

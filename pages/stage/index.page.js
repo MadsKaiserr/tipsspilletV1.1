@@ -134,6 +134,7 @@ function StageForside () {
 
     const [items, setItems] = useState([]);
     const [kommendeItems, setKommendeItems] = useState([]);
+    const [favoritItems, setFavoritItems] = useState([]);
     const [loadingText, setLoadingText] = useState("Indlæser...");
     const [favoritter, setFavoritter] = useState([]);
     const [kuponType, setKuponType] = useState("Single");
@@ -150,7 +151,7 @@ function StageForside () {
         }
     }, [loadingText])
     const [notUsableBtn, setNotUsableBtn] = useState([]);
-    const [kuponBtn, setKuponBtn] = useState("kupon-btn odd-off");
+    const [kuponBtn, setKuponBtn] = useState("kupon-btn odd-notusable");
     const [odds, setOdds] = useState([]);
     const [returnOdds, setReturnOdds] = useState(1);
 
@@ -297,6 +298,44 @@ function StageForside () {
         }
     }
 
+    function rem3wayBet(matchId, type, result) {
+        var returnOddsNew = 1;
+        var udbetalingNew = 0;
+        var oddsSession = JSON.parse(sessionStorage.getItem("odds"));
+        for (var y in oddsSession) {
+            if (oddsSession[y].odds_result !== result + "") {
+                returnOddsNew = returnOddsNew * parseFloat(oddsSession[y].probability);
+                udbetalingNew = returnOddsNew * indsats;
+            }
+        }
+        for (var y in oddsSession) {
+            if (oddsSession[y].match === parseInt(matchId) && oddsSession[y].odds_result === result + "") {
+                const betIdIndex = "3Way Result"+matchId+"-"+oddsSession[y].odds_result;
+
+                var storageReplica = JSON.parse(sessionStorage.getItem("notUsableBtn"));
+                var indexRep = storageReplica.indexOf(betIdIndex);
+                storageReplica.splice(indexRep, 1);
+                setNotUsableBtn(storageReplica);
+                sessionStorage.setItem("notUsableBtn", JSON.stringify(storageReplica));
+
+                var oddsSessionIndex = oddsSession.findIndex(item => item.match === matchId && item.odds_result === result + "");
+                oddsSession.splice(oddsSessionIndex, 1);
+                setOdds(oddsSession);
+                sessionStorage.setItem("odds", JSON.stringify(oddsSession));
+            }
+        }
+        setReturnOdds(returnOddsNew);
+        setUdbetaling(udbetalingNew);
+        if ((odds.length - 1) <= 0) {
+            setKuponBtn("kupon-btn odd-notusable");
+            document.getElementById("kombination-content").classList.remove("display");
+            document.getElementById("singler-content").classList.remove("display");
+
+            document.getElementById("kombination-bottom").classList.add("display");
+            document.getElementById("singler-bottom").classList.remove("display");
+        }
+    }
+
     function updateUdbetaling(type, oddsSend, indsats) {
         if (type === "kombination") {
             var indsatsValue = document.getElementById("indsatsInput").value;
@@ -339,7 +378,7 @@ function StageForside () {
         setReturnOdds(returnOddsNew);
         setUdbetaling(udbetalingNew);
         if ((odds.length - 1) <= 0) {
-            setKuponBtn("kupon-btn odd-off");
+            setKuponBtn("kupon-btn odd-notusable");
             document.getElementById("kombination-content").classList.remove("display");
             document.getElementById("singler-content").classList.remove("display");
 
@@ -607,7 +646,7 @@ function StageForside () {
         setReturnOdds(1);
         setIndsats(0);
         setUdbetaling(0);
-        setKuponBtn("kupon-btn odd-off");
+        setKuponBtn("kupon-btn odd-notusable");
 
         setNotUsableBtn([]);
         sessionStorage.setItem("notUsableBtn", "");
@@ -642,8 +681,13 @@ function StageForside () {
                     if (leagueQuery.slice(17) === (new Date().getFullYear() + "-" + checkMonth + "-" + checkDay) + "/" + (new Date().getFullYear() + "-" + checkMonth + "-" + checkDay2)) {
                         var kommendeItemsArray = [];
                         var dupli = JSON.parse(JSON.stringify(pagesArray));
+                        var favoritArr = [];
+                        var favoritArrSes = JSON.parse(localStorage.getItem("favoritter"));
                         for (var y in dupli) {
                             if (dupli[y].odds.data.length > 0) {
+                                if (dupli[y].time.status !== "FT" && dupli[y].odds.data[0].bookmaker.data[0].odds.data[0] && dupli[y].odds.data[0].bookmaker.data[0].odds.data[1] && dupli[y].odds.data[0].bookmaker.data[0].odds.data[2] && (parseInt(favoritArrSes.findIndex(obj => obj.id === dupli[y].localTeam.data.id)) >= 0 || parseInt(favoritArrSes.findIndex(obj => obj.id === dupli[y].visitorTeam.data.id)) >= 0)) {
+                                    favoritArr.push(dupli[y]);
+                                }
                                 if (dupli[y].time.status !== "FT" && dupli[y].odds.data[0].bookmaker.data[0].odds.data[0] && dupli[y].odds.data[0].bookmaker.data[0].odds.data[1] && dupli[y].odds.data[0].bookmaker.data[0].odds.data[2]) {
                                     kommendeItemsArray.push(dupli[y]);
                                 }
@@ -652,6 +696,10 @@ function StageForside () {
                         kommendeItemsArray.sort((a, b) => {
                             return a.time.starting_at.timestamp - b.time.starting_at.timestamp;
                         });
+                        favoritArr.sort((a, b) => {
+                            return a.time.starting_at.timestamp - b.time.starting_at.timestamp;
+                        });
+                        setFavoritItems(favoritArr);
                         setKommendeItems(kommendeItemsArray);
                     }
                     setLoadingText("");
@@ -659,9 +707,14 @@ function StageForside () {
                 .catch(error => console.log('error', error));
             } else {
                 var kommendeItemsArray = [];
+                var favoritArr = [];
+                var favoritArrSes = JSON.parse(localStorage.getItem("favoritter"));
                 setItems(result.data);
                 for (var i in result.data) {
                     if (result.data[i].odds.data.length > 0) {
+                        if (result.data[i].time.status !== "FT" && result.data[i].odds.data[0].bookmaker.data[0].odds.data[0] && result.data[i].odds.data[0].bookmaker.data[0].odds.data[1] && result.data[i].odds.data[0].bookmaker.data[0].odds.data[2] && (parseInt(favoritArrSes.findIndex(obj => obj.id === result.data[i].localTeam.data.id)) >= 0 || parseInt(favoritArrSes.findIndex(obj => obj.id === result.data[i].visitorTeam.data.id)) >= 0)) {
+                            favoritArr.push(result.data[i]);
+                        }
                         if (result.data[i].time.status !== "FT" && result.data[i].odds.data[0].bookmaker.data[0].odds.data[0] && result.data[i].odds.data[0].bookmaker.data[0].odds.data[1] && result.data[i].odds.data[0].bookmaker.data[0].odds.data[2]) {
                             kommendeItemsArray.push(result.data[i]);
                         }
@@ -671,6 +724,11 @@ function StageForside () {
                     kommendeItemsArray.sort((a, b) => {
                         return a.time.starting_at.timestamp - b.time.starting_at.timestamp;
                     });
+                    favoritArr.sort((a, b) => {
+                        return a.time.starting_at.timestamp - b.time.starting_at.timestamp;
+                    });
+                    console.log(favoritArr)
+                    setFavoritItems(favoritArr);
                     setKommendeItems(kommendeItemsArray);
                 }
                 setLoadingText("");
@@ -881,33 +939,43 @@ function StageForside () {
     }
 
     function getIndskydelse(data) {
-        var oprettelse_weeks = data.oprettelse / (1000*60*60*24*7);
-        var weeks = data.weeks;
-        var weekSince = (new Date().getTime() / (1000*60*60*24*7)) - oprettelse_weeks;
-        if (weekSince - weeks >= 1) {
-            var activeGame = localStorage.getItem("activeGame");
-            const betCalcURL = "https://1ponivn4w3.execute-api.eu-central-1.amazonaws.com/api/updateindskydelse";
+        var nowDate = new Date().getTime();
+        var varighedDate = new Date(slutdato).getTime();
+        if (nowDate < varighedDate) {
+            var oprettelse_weeks = data.oprettelse / (1000*60*60*24*7);
+            var weeks = data.indskydelse_int;
+            var weekSince = (new Date().getTime() / (1000*60*60*24*7)) - oprettelse_weeks;
+            if (weekSince - weeks >= 1) {
+                var activeGame = localStorage.getItem("activeGame");
+                const betCalcURL = "https://1ponivn4w3.execute-api.eu-central-1.amazonaws.com/api/updateindskydelse";
+        
+                const winBody = {
+                    game: activeGame + "",
+                    amount: data.indskydelse_amount,
+                    players: data.players,
+                    since: Math.floor(weekSince)
+                }
     
-            const winBody = {
-                game: activeGame,
-                amount: data.weeks_amount,
-                weeks: parseInt((weekSince - weeks) + "")
-            }
-
-            const requestConfig = {
-                headers: {
-                    "x-api-key": "utBfOHNWpj750kzjq0snL4gNN1SpPTxH8LdSLPmJ"
+                const requestConfig = {
+                    headers: {
+                        "x-api-key": "utBfOHNWpj750kzjq0snL4gNN1SpPTxH8LdSLPmJ"
+                    }
                 }
+                axios.patch(betCalcURL, winBody, requestConfig).then(responseTem => {
+                    console.log("AWS - Indskydelse:", responseTem, winBody);
+                    for (var i in responseTem.data.players) {
+                        if (responseTem.data.players[i].player === localStorage.getItem("email")) {
+                            setCurrentMoney(responseTem.data.players[i].info.money);
+                        }
+                    }
+                }).catch(error => {
+                    if (error.response.status === 401 || error.response.status === 403) {
+                        setNotiMessage("error","Fejl i opdatering af indskydelse" , error.response.data.message);
+                    } else {
+                        setNotiMessage("error","Serverfejl" , "Serveren slog fejl. Dette skyldes ofte for meget trafik på hjemmesiden. Kontakt os for mere information.");
+                    }
+                })
             }
-            axios.patch(betCalcURL, winBody, requestConfig).then(responseTem => {
-                console.log("AWS - Indskydelse:", responseTem, winBody);
-            }).catch(error => {
-                if (error.response.status === 401 || error.response.status === 403) {
-                    setNotiMessage("error","Fejl i opdatering af indskydelse" , error.response.data.message);
-                } else {
-                    setNotiMessage("error","Serverfejl" , "Serveren slog fejl. Dette skyldes ofte for meget trafik på hjemmesiden. Kontakt os for mere information.");
-                }
-            })
         }
     }
 
@@ -923,6 +991,7 @@ function StageForside () {
             }
     
             axios.get(URL, requestConfigen).then(response => {
+                console.log("AWS - Gruppespil:", response)
                 if (response.data.admin !== undefined && response.data.admin !== null) {
                     setActiveGameName(response.data.name);
                     setSelectedGame(response.data);
@@ -1388,6 +1457,9 @@ function StageForside () {
         if (type === "kommende") {
             newItems = kommendeItems;
         }
+        if (type === "favoritter") {
+            newItems = favoritItems;
+        }
         if (typeof window !== 'undefined') {
             if (localStorage.getItem("favoritter")) {
                 favorit3 = JSON.parse(localStorage.getItem("favoritter"));
@@ -1467,6 +1539,9 @@ function StageForside () {
             var getType = items;
             if (type === "kommende") {
                 getType = kommendeItems;
+            }
+            if (type === "favoritter") {
+                getType = favoritItems;
             }
             return (
                 <>
@@ -1623,22 +1698,187 @@ function StageForside () {
                                         betButton2 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "1"} onClick={() => place3wayBet(item.id + "-" + "1", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value, "1", item.time.starting_at.timestamp)}><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</p></button>;
                                         betButton3 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "2"} onClick={() => place3wayBet(item.id + "-" + "2", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value, "2", item.time.starting_at.timestamp)}><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</p></button>;
                                     } else {
-                                        betButton1 = <button className="stage-kampe-odds-btn odd-off">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value}</button>;
-                                        betButton2 = <button className="stage-kampe-odds-btn odd-off">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</button>;
-                                        betButton3 = <button className="stage-kampe-odds-btn odd-off">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</button>;
+                                        betButton1 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "0")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value}</button>;
+                                        betButton2 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "1")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</button>;
+                                        betButton3 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "2")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</button>;
                                         }
                     
                                         if (sessionStorage.getItem("notUsableBtn") !== "" && sessionStorage.getItem("notUsableBtn") !== null && sessionStorage.getItem("notUsableBtn") !== undefined) {
                                             for (var p in JSON.parse(sessionStorage.getItem("notUsableBtn"))) {
                                                 var removedPart = JSON.parse(sessionStorage.getItem("notUsableBtn"))[p].slice(11)
                                                 if (removedPart === item.id + "-" + "0") {
-                                                    betButton1 = <button className="stage-kampe-odds-btn odd-off"><p className="odd-data-p">1</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[0].value}</p></button>;
+                                                    betButton1 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "0")}><p className="odd-data-p">1</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[0].value}</p></button>;
                                                 }
                                                 if (removedPart === item.id + "-" + "1") {
-                                                    betButton2 = <button className="stage-kampe-odds-btn odd-off"><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[1].value}</p></button>;
+                                                    betButton2 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "1")}><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[1].value}</p></button>;
                                                 }
                                                 if (removedPart === item.id + "-" + "2") {
-                                                    betButton3 = <button className="stage-kampe-odds-btn odd-off"><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[2].value}</p></button>;
+                                                    betButton3 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "2")}><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[2].value}</p></button>;
+                                                }
+                                            }
+                                        }
+                                        const gameURL = "/stage/match?game=" + item.id;
+                                        return (
+                                            <li key={item.id}>
+                                                <div className="stage-match">
+                                                    <div className="stage-kampe-top">
+                                                        {item.time.status === "LIVE" &&
+                                                            <div className="stage-live-pulse"></div>
+                                                        }
+                                                        {item.time.status === "HT" &&
+                                                            <div className="stage-live-pulse"></div>
+                                                        }
+                                                    </div>
+                                                    <div className="stage-indhold-down">
+                                                    <Link href={gameURL}>
+                                                        <div className="stage-kampe-hold">
+                                                            {item.time.status === "LIVE" &&
+                                                                <div className="stage-live">
+                                                                    <div className="stage-live-con">
+                                                                        <p className="stage-kampe-minut stage-kampe-minut-active">{liveView}</p>
+                                                                        <p className="stage-blink">&apos;</p>
+                                                                    </div>
+                                                                    <div className="stage-live-scores">
+                                                                        <p className="stage-stilling-p">{item.scores.localteam_score}</p>
+                                                                        <p className="stage-stilling-p">{item.scores.visitorteam_score}</p>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            {item.time.status === "HT" &&
+                                                                <div className="stage-live">
+                                                                    <div className="stage-live-con">
+                                                                        <p className="stage-kampe-minut stage-kampe-minut-active">{liveView}</p>
+                                                                    </div>
+                                                                    <div className="stage-live-scores">
+                                                                        <p className="stage-stilling-p">{item.scores.localteam_score}</p>
+                                                                        <p className="stage-stilling-p">{item.scores.visitorteam_score}</p>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            {item.time.status === "FT" &&
+                                                                <>
+                                                                    <div className="stage-time-small">
+                                                                        <div className="stage-time-con">
+                                                                            <p className="stage-kampe-minut">FT</p>
+                                                                        </div>
+                                                                        <div className="stage-time-scores">
+                                                                            <p className={scoreLocal}>{item.scores.localteam_score}</p>
+                                                                            <p className={scoreVisitor}>{item.scores.visitorteam_score}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            }
+                                                            {item.time.status === "AET" &&
+                                                                <>
+                                                                    <div className="stage-time-small">
+                                                                        <div className="stage-time-con">
+                                                                            <p className="stage-kampe-minut">EFS</p>
+                                                                        </div>
+                                                                        <div className="stage-time-scores">
+                                                                            <p className={scoreLocal}>{item.scores.localteam_score}</p>
+                                                                            <p className={scoreVisitor}>{item.scores.visitorteam_score}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            }
+                                                            {item.time.status === "FT_PEN" &&
+                                                                <>
+                                                                    <div className="stage-time-small">
+                                                                        <div className="stage-time-con">
+                                                                            <p className="stage-kampe-minut">Str.</p>
+                                                                        </div>
+                                                                        <div className="stage-time-scores">
+                                                                            <p className={scoreLocal}>{item.scores.localteam_score}</p>
+                                                                            <p className={scoreVisitor}>{item.scores.visitorteam_score}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            }
+                                                            {item.time.status === "POSTP" &&
+                                                                <>
+                                                                    {item.scores.visitorteam_score &&
+                                                                        <div className="stage-time">
+                                                                            <div className="stage-time-con">
+                                                                                <p className="stage-kampe-minut">{liveView}</p>
+                                                                            </div>
+                                                                            <div className="stage-time-scores">
+                                                                                <p className={scoreLocal}>{item.scores.localteam_score}</p>
+                                                                                <p className={scoreVisitor}>{item.scores.visitorteam_score}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                    {!item.scores.visitorteam_score &&
+                                                                        <div className="stage-time-small">
+                                                                            <div className="stage-time-con">
+                                                                                <p className="stage-kampe-minut">{liveView}</p>
+                                                                                <p className={yearClass}>I morgen</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                </>
+                                                            }
+                                                            {item.time.status === "NS" &&
+                                                                <div className="stage-time-small">
+                                                                    <div className="stage-time-con">
+                                                                        <p className="stage-kampe-minut">{liveView}</p>
+                                                                        <p className={yearClass}>I morgen</p>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                            <div className="stage-kampe-hold-div">
+                                                                <div className="stage-kampe-team">
+                                                                    <Image width="18px" height="18px" alt="." src={item.localTeam.data.logo_path} className="stage-img" />
+                                                                    <p className={teamNameLocal}>{item.localTeam.data.name}</p>
+                                                                </div>
+                                                                <div className="stage-kampe-team">
+                                                                    <Image width="18px" height="18px" alt="." src={item.visitorTeam.data.logo_path} className="stage-img" />
+                                                                    <p className={teamNameVisitor}>{item.visitorTeam.data.name}</p>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        </Link>
+                                                        {item.time.status === "NS" &&
+                                                            <div className="stage-kampe-odds">
+                                                                {betButton1}
+                                                                {betButton2}
+                                                                {betButton3}
+                                                            </div>
+                                                        }
+                                                        {item.time.status !== "NS" &&
+                                                            <div className="stage-kampe-odds-fix">
+
+                                                            </div>
+                                                        }
+                                                        </div>
+                                                    </div>
+                                            </li>);
+                                    } else return;
+                                } else if (type === "favoritter") {
+                                    if ((leagueParse !== 0 && item.league_id === leagueParse && item.odds.data.length > 0) || (leagueParse === 0 && item.league_id !== 2 && item.league_id !== 271 && item.league_id !== 8 && item.league_id !== 564 && item.league_id !== 301 && item.league_id !== 82 && item.league_id !== 573 && item.odds.data.length > 0) && (item.odds.data[0].bookmaker.data[0].odds.data[0] && item.odds.data[0].bookmaker.data[0].odds.data[1] && item.odds.data[0].bookmaker.data[0].odds.data[2])) {
+                                        var betButton1;
+                                        var betButton2;
+                                        var betButton3;
+                                        if (item.time.status === "NS") {
+                                        betButton1 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "0"} onClick={() => place3wayBet(item.id + "-" + "0", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value, "0", item.time.starting_at.timestamp)}><p className="odd-data-p">1</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value}</p></button>;
+                                        betButton2 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "1"} onClick={() => place3wayBet(item.id + "-" + "1", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value, "1", item.time.starting_at.timestamp)}><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</p></button>;
+                                        betButton3 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "2"} onClick={() => place3wayBet(item.id + "-" + "2", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value, "2", item.time.starting_at.timestamp)}><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</p></button>;
+                                    } else {
+                                        betButton1 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "0")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value}</button>;
+                                        betButton2 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "1")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</button>;
+                                        betButton3 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "2")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</button>;
+                                        }
+                    
+                                        if (sessionStorage.getItem("notUsableBtn") !== "" && sessionStorage.getItem("notUsableBtn") !== null && sessionStorage.getItem("notUsableBtn") !== undefined) {
+                                            for (var p in JSON.parse(sessionStorage.getItem("notUsableBtn"))) {
+                                                var removedPart = JSON.parse(sessionStorage.getItem("notUsableBtn"))[p].slice(11)
+                                                if (removedPart === item.id + "-" + "0") {
+                                                    betButton1 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "0")}><p className="odd-data-p">1</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[0].value}</p></button>;
+                                                }
+                                                if (removedPart === item.id + "-" + "1") {
+                                                    betButton2 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "1")}><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[1].value}</p></button>;
+                                                }
+                                                if (removedPart === item.id + "-" + "2") {
+                                                    betButton3 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "2")}><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[2].value}</p></button>;
                                                 }
                                             }
                                         }
@@ -1788,22 +2028,22 @@ function StageForside () {
                                             betButton2 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "1"} onClick={() => place3wayBet(item.id + "-" + "1", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value, "1", item.time.starting_at.timestamp)}><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</p></button>;
                                             betButton3 = <button className="stage-kampe-odds-btn" id={item.id + "-" + "2"} onClick={() => place3wayBet(item.id + "-" + "2", item.id, item.localTeam.data.name, item.visitorTeam.data.name, item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value, "2", item.time.starting_at.timestamp)}><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</p></button>;
                                         } else {
-                                            betButton1 = <button className="stage-kampe-odds-btn odd-off">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value}</button>;
-                                            betButton2 = <button className="stage-kampe-odds-btn odd-off">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</button>;
-                                            betButton3 = <button className="stage-kampe-odds-btn odd-off">{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</button>;
+                                            betButton1 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "0")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[0].value}</button>;
+                                            betButton2 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "1")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[1].value}</button>;
+                                            betButton3 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "2")}>{item.odds.data[item.odds.data.findIndex(obj => obj.name === "3Way Result")].bookmaker.data[0].odds.data[2].value}</button>;
                                         }
                 
                                     if (sessionStorage.getItem("notUsableBtn") !== "" && sessionStorage.getItem("notUsableBtn") !== null && sessionStorage.getItem("notUsableBtn") !== undefined) {
                                         for (var p in JSON.parse(sessionStorage.getItem("notUsableBtn"))) {
                                             var removedPart = JSON.parse(sessionStorage.getItem("notUsableBtn"))[p].slice(11)
                                             if (removedPart === item.id + "-" + "0") {
-                                                betButton1 = <button className="stage-kampe-odds-btn odd-off"><p className="odd-data-p">1</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[0].value}</p></button>;
+                                                betButton1 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "0")}><p className="odd-data-p">1</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[0].value}</p></button>;
                                             }
                                             if (removedPart === item.id + "-" + "1") {
-                                                betButton2 = <button className="stage-kampe-odds-btn odd-off"><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[1].value}</p></button>;
+                                                betButton2 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "1")}><p className="odd-data-p">X</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[1].value}</p></button>;
                                             }
                                             if (removedPart === item.id + "-" + "2") {
-                                                betButton3 = <button className="stage-kampe-odds-btn odd-off"><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[2].value}</p></button>;
+                                                betButton3 = <button className="stage-kampe-odds-btn odd-off" onClick={() => rem3wayBet(item.id, "3Way Result", "2")}><p className="odd-data-p">2</p><p className="odd-data-h1">{item.odds.data[0].bookmaker.data[0].odds.data[2].value}</p></button>;
                                             }
                                         }
                                     }
@@ -1960,8 +2200,11 @@ function StageForside () {
 
     function minField(type) {
         if (type === "kommende") {
-            document.getElementById("stage-main0").classList.toggle("field-min");
+            document.getElementById("stage-main1").classList.toggle("field-min");
             document.getElementById("fieldChevkommende").classList.toggle("deg90");
+        } else if (type === "favoritter") {
+            document.getElementById("stage-main0").classList.toggle("field-min");
+            document.getElementById("fieldChevfavoritter").classList.toggle("deg90");
         }
     }
     
@@ -2129,20 +2372,33 @@ function StageForside () {
                     <div className="stage-main-matches">
                         <div className="stage-main-matches-section">
                             <div className="stage-section-indhold" id="stage-main0">
+                                <div className="stage-section-top" onClick={() => {minField("favoritter")}}>
+                                    <p className="stage-kampe-h1">Hold du følger</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" id="fieldChevfavoritter" className="kupon-minimize" viewBox="0 0 16 16">
+                                        <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                                    </svg>
+                                </div>
+                                <div className="match-loader display" id="stage-loader1"></div>
+                                <ul>
+                                    {getMatches("favoritter")}
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="stage-main-matches-section">
+                            <div className="stage-section-indhold" id="stage-main1">
                                 <div className="stage-section-top" onClick={() => {minField("kommende")}}>
                                     <p className="stage-kampe-h1">Kommende kampe</p>
                                     <svg xmlns="http://www.w3.org/2000/svg" id="fieldChevkommende" className="kupon-minimize" viewBox="0 0 16 16">
                                         <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                     </svg>
                                 </div>
-                                <div className="match-loader display" id="stage-loader1"></div>
                                 <ul>
                                     {getMatches("kommende")}
                                 </ul>
                             </div>
                         </div>
-                        <div className="stage-section-indhold" id="stage-main1">
-                        <div className="stage-section-top" style={{paddingTop: "0px", paddingBottom: "0px"}}>
+                        <div className="stage-section-indhold" id="stage-main2">
+                        <div className="stage-section-top" style={{paddingTop: "0px", cursor: "default"}}>
                             {/* <div className="stage-cal">
                                 <div className="stage-cal-val">
                                     <div className="cal-element" onClick={() => {setSelected(new Date(new Date(selected).getTime() - (3600 * 1000 * 24)))}}>
@@ -2179,9 +2435,6 @@ function StageForside () {
                                 </div>
                             </div> */}
                              <p className="stage-kampe-h1">Kampe idag</p>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="fieldChevkommende" className="kupon-minimize" viewBox="0 0 16 16">
-                                <path fillRule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
-                            </svg>
                         </div>
                         <p className="nogames" id="nogames">Der kunne ikke findes nogen kampe d. {new Date(selected).getDate()}/{new Date(selected).getMonth() + 1}/{new Date(selected).getFullYear()}...</p>
                         <ul>

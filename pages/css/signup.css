@@ -212,8 +212,8 @@
   }
   
   .form-error {
-    font-family: CircularLight;
-    font-weight: 100;
+    font-family: Inter;
+    font-weight: 400;
     color: var(--red);
     font-size: 14px;
     margin-bottom: 20px;

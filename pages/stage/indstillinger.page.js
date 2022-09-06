@@ -7,6 +7,7 @@ import Image from 'next/image'
 import StageHeader from '../layout/stageheader';
 import axios from "axios";
 import Bin from '../img/bin.png';
+import Height from '../components/height';
  
 function StageIndstillinger () {
 
@@ -64,60 +65,63 @@ function StageIndstillinger () {
                 <meta name="robots" content="noindex" />
             </Head>
             <StageHeader />
-            <div className="stage-main-container">
-                <div className="setting-element">
-                    <div className="setting-top">
-                        <p className="setting-top-p">Brugerindstillinger</p>
-                    </div>
-                    <div className="setting-wrapper">
-                        <div className="settings-element" style={{padding: "7px 0px"}}>
-                            <p className="setting-h1">Navn:</p>
-                            <p className="setting-h2">{fornavn + " " + efternavn}</p>
+            <Height />
+            <div className="settings">
+                <div className="profil-main-container">
+                    <div className="setting-element">
+                        <div className="setting-top">
+                            <p className="setting-top-p">Brugerindstillinger</p>
                         </div>
-                        <div className="settings-element" style={{padding: "7px 0px"}}>
-                            <p className="setting-h1">Brugernavn:</p>
-                            <p className="setting-h2">{usernameField}</p>
-                        </div>
-                        <div className="settings-element" style={{padding: "7px 0px"}}>
-                            <p className="setting-h1">Email:</p>
-                            <p className="setting-h2">{emailField}</p>
-                        </div>
-                        <div className="settings-element" style={{padding: "7px 0px"}}>
-                            <p className="setting-h1">Oprettet:</p>
-                            <p className="setting-h2">{oprettelseText}</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="setting-element">
-                    <div className="setting-top">
-                        <p className="setting-top-p">Konto</p>
-                    </div>
-                    <div className="setting-wrapper" style={{gap: "5px"}}>
-                        {!facebook && <div className="settings-element" style={{gap: "15px"}}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="setting-icon" viewBox="0 0 16 16">
-                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                            </svg>
-                            <p className="setting-h3">Opsæt konto med Facebook</p>
-                        </div>}
-                        {facebook && <div className="settings-element" style={{gap: "15px"}}>
-                            <svg xmlns="http://www.w3.org/2000/svg" className="setting-icon" viewBox="0 0 16 16">
-                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
-                            </svg>
-                            <div className="setting-double">
-                                <p className="setting-h3">Konto opsat med facebook</p>
-                                <p className="setting-h4">{emailField}</p>
+                        <div className="setting-wrapper">
+                            <div className="settings-element" style={{padding: "7px 0px"}}>
+                                <p className="setting-h1">Navn:</p>
+                                <p className="setting-h2">{fornavn + " " + efternavn}</p>
                             </div>
-                        </div>}
+                            <div className="settings-element" style={{padding: "7px 0px"}}>
+                                <p className="setting-h1">Brugernavn:</p>
+                                <p className="setting-h2">{usernameField}</p>
+                            </div>
+                            <div className="settings-element" style={{padding: "7px 0px"}}>
+                                <p className="setting-h1">Email:</p>
+                                <p className="setting-h2">{emailField}</p>
+                            </div>
+                            <div className="settings-element" style={{padding: "7px 0px"}}>
+                                <p className="setting-h1">Oprettet:</p>
+                                <p className="setting-h2">{oprettelseText}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="setting-element">
-                    <div className="setting-top">
-                        <p className="setting-top-p">Slet konto</p>
+                    <div className="setting-element">
+                        <div className="setting-top">
+                            <p className="setting-top-p">Konto</p>
+                        </div>
+                        <div className="setting-wrapper" style={{gap: "5px"}}>
+                            {!facebook && <div className="settings-element" style={{gap: "15px"}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="setting-icon" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                </svg>
+                                <p className="setting-h3">Opsæt konto med Facebook</p>
+                            </div>}
+                            {facebook && <div className="settings-element" style={{gap: "15px"}}>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="setting-icon" viewBox="0 0 16 16">
+                                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+                                </svg>
+                                <div className="setting-double">
+                                    <p className="setting-h3">Konto opsat med facebook</p>
+                                    <p className="setting-h4">{emailField}</p>
+                                </div>
+                            </div>}
+                        </div>
                     </div>
-                    <div className="setting-wrapper" style={{gap: "5px"}}>
-                        <div className="settings-element" style={{paddingLeft: "15px", marginLeft: "-15px", width: "calc(100% + 30px)", gap: "15px", backgroundColor: "rgba(205, 61, 100, 0.2)"}}>
-                            <Image src={Bin} height="25px" width="25px" />
-                            <p className="setting-h3" style={{color: "var(--red)", fontWeight: "600"}}>Slet din konto</p>
+                    <div className="setting-element">
+                        <div className="setting-top">
+                            <p className="setting-top-p">Slet konto</p>
+                        </div>
+                        <div className="setting-wrapper" style={{gap: "5px"}}>
+                            <div className="settings-element" style={{paddingLeft: "15px", marginLeft: "-15px", width: "calc(100% + 30px)", gap: "15px", backgroundColor: "rgba(205, 61, 100, 0.2)"}}>
+                                <Image src={Bin} height="25px" width="25px" />
+                                <p className="setting-h3" style={{color: "var(--red)", fontWeight: "600"}}>Slet din konto</p>
+                            </div>
                         </div>
                     </div>
                 </div>
